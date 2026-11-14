@@ -29,13 +29,13 @@
 </style></noscript>
 <style>
 /* ============================================================
-   LUXVOLT · Sistema visual — "Electricidad de atelier"
+   LUXVOLT · Sistema visual — "Electricidad de atelier" · EDICIÓN VIVA
    ============================================================ */
 :root{
   --bg0:#05070F; --bg1:#0A101F; --surface:rgba(15,22,40,.72); --surface2:#0E1526;
   --line:rgba(232,184,75,.16); --line2:rgba(232,184,75,.34);
   --gold:#E8B84B; --gold2:#F6D98A; --gold-deep:#C9973B; --amber:#FF9E3D;
-  --volt:#4FD9FF; --violet:#8F7BFF;
+  --volt:#4FD9FF; --violet:#8F7BFF; --rose:#FF7AB8;
   --ok:#3ED598; --warn:#FFC24D; --bad:#FF6262; --info:#58B6FF;
   --ink:#F3EEE2; --muted:#A7AFC2; --dim:#7C8499;
   --scrim:rgba(3,5,10,.74);
@@ -70,17 +70,20 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 /* ---------- Fondo ambiental por capas ---------- */
 #bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none}
 .bg-mesh{position:absolute;top:0;left:0;right:0;bottom:0;background:
-  radial-gradient(52vw 52vw at 12% -6%,rgba(232,184,75,.10),transparent 62%),
-  radial-gradient(46vw 46vw at 92% 12%,rgba(79,217,255,.075),transparent 60%),
-  radial-gradient(60vw 60vw at 50% 112%,rgba(143,123,255,.085),transparent 62%),
+  radial-gradient(52vw 52vw at 12% -6%,rgba(232,184,75,.12),transparent 62%),
+  radial-gradient(46vw 46vw at 92% 12%,rgba(79,217,255,.09),transparent 60%),
+  radial-gradient(60vw 60vw at 50% 112%,rgba(143,123,255,.10),transparent 62%),
+  radial-gradient(40vw 40vw at 88% 82%,rgba(255,122,184,.07),transparent 60%),
   linear-gradient(180deg,#05070F 0%,#070B17 50%,#05070F 100%)}
-.aurora{position:absolute;border-radius:50%;filter:blur(80px);mix-blend-mode:screen;will-change:transform;opacity:.5}
-.a1{width:44vw;height:44vw;left:-10vw;top:-12vw;background:radial-gradient(circle,rgba(232,184,75,.20),transparent 65%);animation:drift1 28s ease-in-out infinite alternate}
-.a2{width:38vw;height:38vw;right:-8vw;top:22vh;background:radial-gradient(circle,rgba(79,217,255,.16),transparent 65%);animation:drift2 34s ease-in-out infinite alternate}
-.a3{width:46vw;height:46vw;left:24vw;bottom:-18vw;background:radial-gradient(circle,rgba(143,123,255,.16),transparent 65%);animation:drift3 40s ease-in-out infinite alternate}
+.aurora{position:absolute;border-radius:50%;filter:blur(80px);mix-blend-mode:screen;will-change:transform;opacity:.55}
+.a1{width:44vw;height:44vw;left:-10vw;top:-12vw;background:radial-gradient(circle,rgba(232,184,75,.22),transparent 65%);animation:drift1 28s ease-in-out infinite alternate}
+.a2{width:38vw;height:38vw;right:-8vw;top:22vh;background:radial-gradient(circle,rgba(79,217,255,.18),transparent 65%);animation:drift2 34s ease-in-out infinite alternate}
+.a3{width:46vw;height:46vw;left:24vw;bottom:-18vw;background:radial-gradient(circle,rgba(143,123,255,.18),transparent 65%);animation:drift3 40s ease-in-out infinite alternate}
+.a4{width:34vw;height:34vw;right:6vw;bottom:-10vw;background:radial-gradient(circle,rgba(255,122,184,.14),transparent 65%);animation:drift4 32s ease-in-out infinite alternate}
 @keyframes drift1{to{transform:translate(9vw,7vh) scale(1.15)}}
 @keyframes drift2{to{transform:translate(-7vw,-9vh) scale(.9)}}
 @keyframes drift3{to{transform:translate(-9vw,-6vh) scale(1.12)}}
+@keyframes drift4{to{transform:translate(-6vw,-8vh) scale(1.1)}}
 .grain{position:absolute;top:-60%;left:-60%;right:-60%;bottom:-60%;width:220%;height:220%;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
   animation:grainShift 1.1s steps(4) infinite}
@@ -98,6 +101,11 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 @keyframes veilPulse{0%,100%{transform:scale(1);opacity:.75;filter:drop-shadow(0 0 6px rgba(232,184,75,.4))}50%{transform:scale(1.12);opacity:1;filter:drop-shadow(0 0 22px rgba(232,184,75,.8))}}
 .veil-word{font-family:var(--font-d);font-weight:700;letter-spacing:.42em;font-size:.85rem;color:var(--gold2);padding-left:.42em}
 .veil-sub{font-family:var(--font-s);font-size:1.35rem;color:var(--dim);margin-top:10px}
+.veil-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.veil-dots i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:vd 1s ease-in-out infinite}
+.veil-dots i:nth-child(2){background:var(--volt);animation-delay:.15s}
+.veil-dots i:nth-child(3){background:var(--violet);animation-delay:.3s}
+@keyframes vd{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-7px);opacity:1}}
 
 /* ---------- Pinceles de lujo ---------- */
 .brush{position:fixed;left:0;top:0;width:0;height:0;opacity:0;will-change:transform;pointer-events:none}
@@ -119,7 +127,9 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 #nav.scrolled{background:rgba(5,7,15,.84);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-color:var(--line);box-shadow:0 14px 44px -18px rgba(0,0,0,.7)}
 .brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
 .brand svg{width:25px;height:25px;filter:drop-shadow(0 0 8px rgba(232,184,75,.55))}
-.brand-word{font-family:var(--font-d);font-weight:700;font-size:1.22rem;letter-spacing:.2em;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-word{font-family:var(--font-d);font-weight:700;font-size:1.22rem;letter-spacing:.2em;
+  background:linear-gradient(110deg,#C9973B,#F6D98A 30%,#FFF3C4 50%,#E8B84B 70%,#C9973B);background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:goldFlow 8s linear infinite}
 .nav-links{display:flex;gap:22px;gap:clamp(14px,2.4vw,30px);margin-left:auto}
 .nav-links a{position:relative;font-size:.78rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:8px 2px;transition:color .3s}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1.5px;background:var(--grad-gold);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
@@ -127,7 +137,10 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 .nav-links a.active{color:var(--gold2)}
 .nav-links a.active::after{transform:scaleX(1)}
 .nav-actions{display:flex;align-items:center;gap:12px;margin-left:8px}
-#progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--amber),var(--volt));box-shadow:0 0 10px rgba(232,184,75,.6)}
+#progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;
+  background:linear-gradient(90deg,var(--gold),var(--amber),var(--rose),var(--volt),var(--violet));background-size:300% 100%;
+  box-shadow:0 0 10px rgba(232,184,75,.6);animation:progFlow 5s linear infinite}
+@keyframes progFlow{to{background-position:300% 0}}
 .icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;color:var(--gold2);transition:box-shadow .3s,background .3s,transform .2s;flex-shrink:0}
 .icon-btn:hover{background:rgba(232,184,75,.08);box-shadow:0 0 18px rgba(232,184,75,.3)}
 .icon-btn:active{transform:scale(.93)}
@@ -151,6 +164,9 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 .btn-ghost{border:1px solid var(--line2);color:var(--gold2);padding:14px 26px;font-size:.85rem}
 .btn-ghost:hover{background:rgba(232,184,75,.08);border-color:var(--gold);transform:translateY(-2px)}
 .btn-sm{padding:10px 18px;font-size:.72rem}
+.ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.45);animation:rip .6s ease-out forwards;pointer-events:none}
+.btn-ghost .ripple{background:rgba(232,184,75,.25)}
+@keyframes rip{to{transform:scale(3);opacity:0}}
 
 /* ---------- Menú móvil ---------- */
 #menu{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;background:rgba(5,7,15,.97);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
@@ -171,20 +187,27 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 #logros::before{background:radial-gradient(46vw 34vw at 82% 20%,rgba(79,217,255,.05),transparent 65%)}
 #servicios::before{background:radial-gradient(50vw 36vw at 12% 30%,rgba(232,184,75,.055),transparent 65%)}
 #proyectos::before{background:radial-gradient(52vw 40vw at 85% 60%,rgba(143,123,255,.06),transparent 65%)}
+#demo::before{background:radial-gradient(50vw 38vw at 20% 40%,rgba(255,122,184,.06),transparent 65%)}
 #metodo::before{background:radial-gradient(46vw 36vw at 15% 70%,rgba(79,217,255,.05),transparent 65%)}
 #contacto::before{background:radial-gradient(56vw 40vw at 50% 100%,rgba(232,184,75,.07),transparent 65%)}
 .hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:40px;gap:clamp(24px,4vw,60px);padding-top:calc(var(--nav-h) + 46px);padding-bottom:96px}
 .hero-circuits{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;pointer-events:none;opacity:.6}
 .hero-circuits path{stroke:var(--gold);stroke-width:1;fill:none;opacity:.08;stroke-dasharray:7 11;animation:dashdrift 32s linear infinite}
-.hero-circuits circle{fill:var(--gold);opacity:.14;animation:nodePulse 3.4s ease-in-out infinite}
+.hero-circuits circle.node{fill:var(--gold);opacity:.14;animation:nodePulse 3.4s ease-in-out infinite}
+.hdot{opacity:0}
 @keyframes dashdrift{to{stroke-dashoffset:-360}}
 @keyframes nodePulse{0%,100%{opacity:.08}50%{opacity:.3}}
 .eyebrow-script{font-family:var(--font-s);font-size:1.9rem;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--gold2);transform:rotate(-2deg);display:inline-block;text-shadow:0 0 24px rgba(232,184,75,.35)}
 .hero h1{font-family:var(--font-d);font-weight:900;font-size:4.8rem;font-size:clamp(3.2rem,8.6vw,6.6rem);line-height:1.04;letter-spacing:.05em;margin:10px 0 14px;position:relative}
 .hero h1::before{content:"";position:absolute;left:-8%;top:-30%;width:80%;height:160%;background:radial-gradient(closest-side,rgba(232,184,75,.13),transparent);pointer-events:none}
-.gilded .u{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gilded .u{background:linear-gradient(110deg,#C9973B,#F6D98A 30%,#FFF3C4 50%,#E8B84B 70%,#C9973B);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+#heroTitle .u.ink{animation:inkGlow 1.15s ease-out,goldFlow 7s linear infinite}
+@keyframes goldFlow{to{background-position:-220% 0}}
 .tagline{font-family:var(--font-d);font-weight:600;font-size:1.25rem;font-size:clamp(1.05rem,2.3vw,1.5rem);letter-spacing:.1em;color:var(--gold2);text-transform:uppercase;margin-bottom:18px}
 .hero-desc{color:var(--muted);font-size:1.05rem;font-size:clamp(1rem,1.4vw,1.12rem);max-width:56ch}
+.hero-rotor{margin-top:14px;font-size:1.02rem;color:var(--muted)}
+.rotor-word{display:inline-block;font-weight:600;color:var(--volt);transition:opacity .28s ease,transform .28s ease}
+.rotor-word.swap{opacity:0;transform:translateY(8px)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
 .hero-chips{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px}
 .hchip{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted)}
@@ -202,10 +225,25 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .emblem .fade-el{opacity:0;transition:opacity 1s ease 1.4s}
 .emblem.drawn .fade-el{opacity:1}
 .emblem .orbit{transform-origin:170px 170px;animation:spin 11s linear infinite}
+.emblem .orbit2{transform-origin:170px 170px;animation:spinRev 17s linear infinite}
 .emblem .spin-slow{transform-origin:170px 170px;animation:spin 60s linear infinite}
 .emblem .spin-rev{transform-origin:170px 170px;animation:spinRev 42s linear infinite}
+.emblem .core-pulse{opacity:0}
+.emblem.drawn .core-pulse{animation:corePulse 3.2s ease-in-out infinite 1.6s}
+@keyframes corePulse{0%,100%{opacity:.14}50%{opacity:.34}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes spinRev{to{transform:rotate(-360deg)}}
+.em-badge{position:absolute;display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:500;color:var(--ink);
+  background:rgba(10,16,31,.8);border:1px solid var(--line2);border-radius:999px;padding:9px 15px;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 12px 30px -12px rgba(0,0,0,.7);white-space:nowrap;z-index:3}
+.em-badge svg{width:14px;height:14px}
+.eb1{top:6%;left:-4%;color:var(--gold2);animation:bob 6s ease-in-out infinite}
+.eb1 svg{color:var(--gold)}
+.eb2{bottom:12%;right:-6%;animation:bob 7s ease-in-out infinite .8s}
+.eb2 svg{color:var(--ok)}
+.eb3{top:48%;left:-12%;animation:bob 8s ease-in-out infinite 1.6s}
+.eb3 svg{color:var(--rose)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 .cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--dim)}
 .cue-mouse{width:25px;height:41px;border:1.5px solid var(--line2);border-radius:14px;position:relative}
 .cue-mouse::before{content:"";position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:3px;background:var(--gold);animation:wheel 1.8s ease-in-out infinite}
@@ -232,6 +270,8 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-track span{font-size:.74rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);display:inline-flex;align-items:center;gap:52px}
 .marquee-track span::after{content:"✦";color:var(--gold);font-size:.8rem}
+.marquee-track span:nth-child(3n)::after{color:var(--volt)}
+.marquee-track span:nth-child(3n+1)::after{color:var(--rose)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ---------- Cabeceras de sección ---------- */
@@ -243,7 +283,8 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 
 /* ---------- Cifras ---------- */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.stat{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 26px;overflow:hidden;transition:border-color .4s,box-shadow .4s}
+.stat{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 26px;overflow:hidden;transition:border-color .4s,box-shadow .4s,transform .4s}
+.stat:hover{transform:translateY(-4px)}
 .stat::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(246,217,138,.6),transparent)}
 .stat.lit{border-color:var(--line2);box-shadow:0 18px 50px -24px rgba(232,184,75,.4)}
 .stat-top{display:flex;align-items:baseline;gap:4px}
@@ -258,8 +299,9 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 /* ---------- Servicios ---------- */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .svc{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:32px 28px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
-.svc::before{content:"";position:absolute;top:-40%;right:-30%;width:70%;height:80%;background:radial-gradient(closest-side,rgba(232,184,75,.09),transparent);opacity:0;transition:opacity .5s}
-.svc:hover{transform:translateY(-7px);border-color:var(--line2);box-shadow:0 26px 60px -28px rgba(232,184,75,.4)}
+.svc::before{content:"";position:absolute;top:-40%;right:-30%;width:70%;height:80%;background:radial-gradient(closest-side,var(--acc-soft,rgba(232,184,75,.09)),transparent);opacity:0;transition:opacity .5s}
+.svc::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc,var(--gold)),transparent);opacity:.75}
+.svc:hover{transform:translateY(-7px);border-color:var(--line2);box-shadow:0 26px 60px -28px var(--acc-soft,rgba(232,184,75,.4))}
 .svc:hover::before{opacity:1}
 .svc-icon{width:54px;height:54px}
 .icon-draw path,.icon-draw circle,.icon-draw rect{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s ease}
@@ -270,8 +312,8 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .svc p{color:var(--muted);font-size:.95rem;line-height:1.7}
 .svc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
 .chip{font-size:.68rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border:1px solid var(--line);border-radius:999px;color:var(--gold2);background:rgba(232,184,75,.05)}
-.svc-cta{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);transition:gap .3s,color .3s}
-.svc-cta:hover{gap:13px;color:var(--gold)}
+.svc-cta{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc,var(--gold2));transition:gap .3s,color .3s}
+.svc-cta:hover{gap:13px;color:var(--acc,var(--gold))}
 .svc-cta svg{width:14px;height:14px}
 
 /* ---------- Galería de obras ---------- */
@@ -287,6 +329,15 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .work-frame canvas{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%}
 .work-frame.done canvas{animation:breathe 16s ease-in-out infinite alternate}
 @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.055)}}
+.twinkles{position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 1s}
+.work-frame.done .twinkles{opacity:1}
+.twinkles i{position:absolute;width:4px;height:4px;border-radius:50%;background:#F6D98A;box-shadow:0 0 8px 2px rgba(246,217,138,.7);animation:twk 3.2s ease-in-out infinite}
+.twinkles i:nth-child(1){top:18%;left:12%}
+.twinkles i:nth-child(2){top:30%;left:78%;background:#4FD9FF;box-shadow:0 0 8px 2px rgba(79,217,255,.7);animation-delay:.6s}
+.twinkles i:nth-child(3){top:62%;left:22%;background:#FF7AB8;box-shadow:0 0 8px 2px rgba(255,122,184,.7);animation-delay:1.2s}
+.twinkles i:nth-child(4){top:70%;left:64%;animation-delay:1.8s}
+.twinkles i:nth-child(5){top:14%;left:52%;background:#8F7BFF;box-shadow:0 0 8px 2px rgba(143,123,255,.7);animation-delay:2.4s}
+@keyframes twk{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.25)}}
 .work-idle{position:absolute;top:0;left:0;right:0;bottom:0;display:grid;place-content:center;justify-items:center;gap:12px;transition:opacity .5s;z-index:1}
 .work-idle svg{width:42px;height:42px;color:var(--gold);opacity:.16}
 .work-idle span{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);opacity:.7}
@@ -299,6 +350,54 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .work-meta.in{opacity:1}
 .work-num{font-family:var(--font-d);font-size:.78rem;color:var(--gold);letter-spacing:.12em;white-space:nowrap}
 .collection-note{text-align:center;font-family:var(--font-s);font-size:1.5rem;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--gold2);margin-top:44px;opacity:.85}
+
+/* ---------- Laboratorio de luz (demo interactiva) ---------- */
+.demo-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;gap:clamp(26px,4vw,52px);align-items:stretch}
+.room{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line2);
+  --lamp:#FFC24D;--win:#232C4E;--strip:#E8B84B;--glowA:.55;
+  background:#0D0703;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)}
+@supports not (aspect-ratio:4/3){.room{height:0;padding-bottom:75%}}
+.room-amb{position:absolute;top:0;left:0;right:0;bottom:0;transition:opacity .9s ease}
+#ambA{opacity:1;background:radial-gradient(120% 100% at 50% 0%,#3A2410 0%,#1C1006 62%,#0D0703 100%)}
+#ambB{opacity:0}
+.room.party .room-amb{animation:partyHue 7s linear infinite}
+@keyframes partyHue{to{filter:hue-rotate(360deg)}}
+.room-window{position:absolute;top:12%;left:8%;width:26%;height:44%;border:2px solid rgba(232,184,75,.5);border-radius:8px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;padding:4px;background:rgba(232,184,75,.12)}
+.room-window i{background:var(--win);border-radius:3px;transition:background-color .9s ease;position:relative}
+.room-window i::after{content:"";position:absolute;top:12%;left:18%;width:3px;height:3px;border-radius:50%;background:#F6D98A;box-shadow:0 0 6px 2px rgba(246,217,138,.7);opacity:.8}
+.lamp-cord{position:absolute;top:0;left:63%;width:2px;height:16%;background:rgba(232,184,75,.6)}
+.lamp-glow{position:absolute;top:14%;left:50%;width:26%;height:26%;border-radius:50%;background:var(--lamp);filter:blur(34px);opacity:var(--glowA);transition:background-color .9s ease,opacity .9s ease;mix-blend-mode:screen}
+.room.party .lamp-glow{animation:lampPulse 1.1s ease-in-out infinite}
+@keyframes lampPulse{0%,100%{opacity:var(--glowA)}50%{opacity:calc(var(--glowA)*0.55)}}
+.lamp-shade{position:absolute;top:16%;left:56.5%;width:13%;height:9%;background:var(--lamp);-webkit-clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);transition:background-color .9s ease;filter:brightness(.9)}
+.room-sofa{position:absolute;bottom:14%;left:38%;width:38%;height:16%;background:#141B2E;border:1px solid rgba(232,184,75,.35);border-radius:10px 10px 6px 6px;box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.room-sofa::before{content:"";position:absolute;top:-45%;left:6%;right:6%;height:60%;background:#1A2340;border:1px solid rgba(232,184,75,.3);border-radius:10px}
+.room-plant{position:absolute;bottom:14%;left:12%;width:7%;height:20%}
+.room-plant::before{content:"";position:absolute;bottom:0;left:20%;width:60%;height:34%;background:#7A4A1E;border-radius:3px}
+.room-plant::after{content:"";position:absolute;bottom:28%;left:0;width:100%;height:80%;background:radial-gradient(circle at 50% 80%,#2E7D5B,#1A4A36 70%);border-radius:50% 50% 45% 45%}
+.room-floor{position:absolute;bottom:0;left:0;right:0;height:14%;background:linear-gradient(180deg,#0A0F1F,#060913);border-top:1px solid rgba(232,184,75,.25)}
+.room-strip{position:absolute;bottom:14%;left:0;right:0;height:3px;background:var(--strip);box-shadow:0 0 14px 2px var(--strip);opacity:.8;transition:background-color .9s ease,box-shadow .9s ease}
+.room-spark{position:absolute;width:5px;height:5px;border-radius:50%;opacity:0;transition:opacity .5s}
+.room.party .room-spark{opacity:1;animation:twk 1.6s ease-in-out infinite}
+.rs1{top:20%;left:30%;background:#FF7AB8;box-shadow:0 0 8px 2px rgba(255,122,184,.8)}
+.rs2{top:34%;left:80%;background:#4FD9FF;box-shadow:0 0 8px 2px rgba(79,217,255,.8);animation-delay:.3s}
+.rs3{top:58%;left:16%;background:#F6D98A;box-shadow:0 0 8px 2px rgba(246,217,138,.8);animation-delay:.6s}
+.rs4{top:12%;left:70%;background:#8F7BFF;box-shadow:0 0 8px 2px rgba(143,123,255,.8);animation-delay:.9s}
+.rs5{top:46%;left:50%;background:#3ED598;box-shadow:0 0 8px 2px rgba(62,213,152,.8);animation-delay:1.2s}
+.room-tag{position:absolute;top:12px;right:12px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);background:rgba(5,7,15,.7);border:1px solid var(--line2);border-radius:999px;padding:6px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.demo-panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px;padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:18px}
+.demo-hint{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:6px;box-shadow:0 0 8px rgba(62,213,152,.8);animation:emergPulse 1.6s ease-in-out infinite}
+.scene-btns{display:flex;flex-wrap:wrap;gap:10px}
+.scene-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid var(--line2);color:var(--ink);font-size:.9rem;font-weight:500;background:rgba(232,184,75,.04);transition:transform .2s,border-color .3s,background .3s,box-shadow .3s}
+.scene-btn:hover{transform:translateY(-2px);border-color:var(--sc,var(--gold))}
+.scene-btn.active{border-color:var(--sc,var(--gold));background:rgba(255,255,255,.06);box-shadow:0 0 18px -4px var(--sc,var(--gold));color:var(--gold2)}
+.scene-info b{font-family:var(--font-d);font-size:1.3rem;color:var(--gold2);display:block;margin-bottom:6px}
+.scene-info p{color:var(--muted);font-size:.95rem;min-height:3.2em}
+.scene-meter{display:flex;align-items:center;gap:12px;font-size:.78rem;color:var(--dim)}
+.meter{flex:1;height:8px;border-radius:999px;background:#0A101F;border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;width:70%;background:#FFC24D;border-radius:999px;transition:width .8s cubic-bezier(.2,.7,.2,1),background-color .8s}
+.demo-note{font-size:.78rem;color:var(--dim)}
 
 /* ---------- Método ---------- */
 .method{position:relative;padding-left:0}
@@ -316,9 +415,12 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .step-ghost{position:absolute;right:0;top:6px;font-family:var(--font-d);font-weight:900;font-size:5.4rem;color:var(--gold);opacity:.055;pointer-events:none;line-height:1}
 
 /* ---------- Voces ---------- */
+.rating-chip{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:9px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(232,184,75,.06);color:var(--gold2);font-size:.86rem;font-weight:500}
+.rating-chip svg{width:15px;height:15px;color:var(--gold)}
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .quote{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:32px 28px;transition:transform .4s,border-color .4s,box-shadow .4s}
 .quote:hover{transform:translateY(-6px);border-color:var(--line2);box-shadow:0 24px 56px -28px rgba(143,123,255,.35)}
+.quote.glow{border-color:var(--line2);box-shadow:0 24px 56px -28px rgba(232,184,75,.45);transform:translateY(-4px)}
 .quote::before{content:"“";position:absolute;top:2px;right:18px;font-family:var(--font-d);font-size:5rem;color:var(--gold);opacity:.16;line-height:1}
 .stars{display:flex;gap:4px;margin-bottom:16px}
 .stars svg{width:14px;height:14px;color:var(--gold)}
@@ -398,6 +500,7 @@ footer h4{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:u
 #topBtn.show{opacity:1;pointer-events:auto;transform:none}
 #topBtn:hover{transform:scale(1.1)}
 #topBtn svg{width:19px;height:19px}
+#topBtn .ring{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
 #toasts{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:92vw;max-width:480px}
 .toast{display:flex;align-items:center;gap:11px;background:rgba(10,16,31,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line2);border-radius:12px;padding:12px 19px;font-size:.9rem;box-shadow:0 14px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(12px);transition:opacity .35s,transform .35s;max-width:100%}
 .toast.show{opacity:1;transform:none}
@@ -424,9 +527,11 @@ footer h4{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:u
 }
 @media(max-width:980px){
   .contact-grid{grid-template-columns:1fr}
+  .demo-grid{grid-template-columns:1fr}
   .hero{grid-template-columns:1fr;padding-top:calc(var(--nav-h) + 34px);gap:34px}
   .emblem{width:72vw;max-width:300px}
   .emblem-wrap{order:2}
+  .em-badge{display:none}
 }
 @media(max-width:900px){
   .nav-links{display:none}
@@ -484,10 +589,10 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
-  .aurora,.grain,.marquee-track,.emblem .orbit,.emblem .spin-slow,.emblem .spin-rev,.emblem-float{animation:none!important}
+  .aurora,.grain,.marquee-track,.emblem .orbit,.emblem .orbit2,.emblem .spin-slow,.emblem .spin-rev,.emblem-float{animation:none!important}
   [data-paint] .u{opacity:1;transform:none;filter:none}
   [data-reveal]{opacity:1;transform:none}
-  .brush,#fx,#glow{display:none!important}
+  .brush,#fx,#glow,.hdot,.room-spark{display:none!important}
 }
 </style>
 </head>
@@ -533,6 +638,21 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <linearGradient id="gVolt" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#4FD9FF"/><stop offset="1" stop-color="#8F7BFF"/>
     </linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD9A8"/><stop offset="1" stop-color="#FF9E3D"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#CFC5FF"/><stop offset="1" stop-color="#8F7BFF"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFC7E3"/><stop offset="1" stop-color="#FF7AB8"/>
+    </linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B8F5DC"/><stop offset="1" stop-color="#3ED598"/>
+    </linearGradient>
+    <radialGradient id="gCore">
+      <stop offset="0" stop-color="#F6D98A" stop-opacity=".55"/><stop offset="1" stop-color="#F6D98A" stop-opacity="0"/>
+    </radialGradient>
     <symbol id="s-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-2 8L18 9h-6l1-7z" fill="currentColor"/></symbol>
     <symbol id="s-star" viewBox="0 0 14 14"><path d="M7 1l1.8 4 4.2.4-3.2 2.8 1 4.3L7 10.2 3.2 12.5l1-4.3L1 5.4 5.2 5z" fill="currentColor"/></symbol>
     <symbol id="s-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-7 7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -552,13 +672,14 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <svg class="veil-bolt" viewBox="0 0 24 24"><use href="#s-bolt" fill="#E8B84B"/></svg>
     <div class="veil-word">LUXVOLT</div>
     <div class="veil-sub">preparando el lienzo…</div>
+    <div class="veil-dots"><i></i><i></i><i></i></div>
   </div>
 </div>
 
 <!-- Fondo -->
 <div id="bg" aria-hidden="true">
   <div class="bg-mesh"></div>
-  <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div>
+  <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="aurora a4"></div>
   <div class="grain"></div>
 </div>
 <div id="glow" aria-hidden="true"></div>
@@ -575,6 +696,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <a href="#inicio" data-navlink="inicio" class="active">Inicio</a>
     <a href="#servicios" data-navlink="servicios">Servicios</a>
     <a href="#proyectos" data-navlink="proyectos">Proyectos</a>
+    <a href="#demo" data-navlink="demo">Demo</a>
     <a href="#metodo" data-navlink="metodo">Método</a>
     <a href="#contacto" data-navlink="contacto">Contacto</a>
   </nav>
@@ -599,9 +721,10 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   <a class="mlink" href="#inicio"><i>01</i>Inicio</a>
   <a class="mlink" href="#servicios"><i>02</i>Servicios</a>
   <a class="mlink" href="#proyectos"><i>03</i>Proyectos</a>
-  <a class="mlink" href="#metodo"><i>04</i>Método</a>
-  <a class="mlink" href="#voces"><i>05</i>Voces</a>
-  <a class="mlink" href="#contacto"><i>06</i>Contacto</a>
+  <a class="mlink" href="#demo"><i>04</i>Demo de luz</a>
+  <a class="mlink" href="#metodo"><i>05</i>Método</a>
+  <a class="mlink" href="#voces"><i>06</i>Voces</a>
+  <a class="mlink" href="#contacto"><i>07</i>Contacto</a>
   <a class="btn btn-gold" href="#contacto"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Solicitar presupuesto</a>
   <div class="menu-foot">
     <div class="script">la energía, elevada a arte</div>
@@ -617,17 +740,21 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <path d="M-20 180 H320 L380 240 H620"/>
       <path d="M1460 620 H1120 L1060 560 H860 L800 620 H640"/>
       <path d="M-20 760 H240 L300 700 H480"/>
-      <circle cx="620" cy="240" r="3.4"/><circle cx="640" cy="620" r="3.4"/>
-      <circle cx="480" cy="700" r="3.4"/><circle cx="320" cy="180" r="3.4"/>
+      <circle class="node" cx="620" cy="240" r="3.4"/><circle class="node" cx="640" cy="620" r="3.4"/>
+      <circle class="node" cx="480" cy="700" r="3.4"/><circle class="node" cx="320" cy="180" r="3.4"/>
+      <circle class="hdot" id="hd0" cx="-20" cy="180" r="3.4" fill="#F6D98A" style="filter:drop-shadow(0 0 6px #F6D98A)"/>
+      <circle class="hdot" id="hd1" cx="1460" cy="620" r="3.4" fill="#4FD9FF" style="filter:drop-shadow(0 0 6px #4FD9FF)"/>
+      <circle class="hdot" id="hd2" cx="-20" cy="760" r="3.4" fill="#8F7BFF" style="filter:drop-shadow(0 0 6px #8F7BFF)"/>
     </svg>
     <div class="hero-left">
       <span class="eyebrow-script" id="heroEyebrow" data-reveal="manual">el arte de la energía</span>
       <h1 id="heroTitle" class="gilded" data-paint="chars">LUXVOLT</h1>
       <p class="tagline" id="heroTagline" data-paint="words">Ingeniería eléctrica de autor</p>
-      <p class="hero-desc" id="heroDesc" data-paint="words">Diseñamos, instalamos y cuidamos sistemas eléctricos excepcionales para residencias, hoteles e industria. Precisión de laboratorio, acabado de atelier: cada circuito, una pieza de alta costura.</p>
+      <p class="hero-desc" id="heroDesc" data-paint="words">Diseñamos, instalamos y cuidamos sistemas eléctricos excepcionales. Precisión de laboratorio, acabado de atelier: cada circuito, una pieza de alta costura.</p>
+      <p class="hero-rotor" id="heroRotor" data-reveal="manual">para <span id="rotorWord" class="rotor-word">residencias</span> ✨</p>
       <div class="hero-ctas" id="heroCtas" data-reveal="manual">
         <a class="btn btn-gold" href="#contacto"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Solicitar presupuesto</a>
-        <a class="btn btn-ghost" href="#proyectos">Ver la galería<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#demo">Probar la magia<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></a>
       </div>
       <div class="hero-chips" id="heroChips" data-reveal="manual">
         <span class="hchip"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Respuesta 24/7</span>
@@ -640,6 +767,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <svg class="emblem" id="heroEmblem" viewBox="0 0 340 340" role="img" aria-label="Emblema de LUXVOLT: un rayo dorado dentro de anillos ornamentales">
           <circle class="fade-el spin-slow" cx="170" cy="170" r="150" fill="none" stroke="#E8B84B" stroke-width="7" stroke-dasharray="2 11" opacity=".22"/>
           <circle class="fade-el spin-rev" cx="170" cy="170" r="143" fill="none" stroke="#F6D98A" stroke-width="1" stroke-dasharray="2 16" opacity=".35"/>
+          <circle class="core-pulse" cx="170" cy="170" r="72" fill="url(#gCore)"/>
           <circle class="ed e1" cx="170" cy="170" r="134" pathLength="1" fill="none" stroke="url(#gGold)" stroke-width="1.3"/>
           <circle class="ed e2" cx="170" cy="170" r="112" pathLength="1" fill="none" stroke="url(#gGold)" stroke-width=".8" opacity=".65"/>
           <g stroke="url(#gGold)" stroke-width="1">
@@ -660,8 +788,15 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
             <circle cx="170" cy="36" r="9" fill="#F6D98A" opacity=".22"/>
             <circle cx="170" cy="36" r="3.4" fill="#F6D98A"/>
           </g>
+          <g class="orbit2 fade-el">
+            <circle cx="170" cy="58" r="6" fill="#4FD9FF" opacity=".2"/>
+            <circle cx="170" cy="58" r="2.6" fill="#4FD9FF"/>
+          </g>
         </svg>
       </div>
+      <span class="em-badge eb1" data-reveal="manual"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>24/7 activos</span>
+      <span class="em-badge eb2" data-reveal="manual"><svg viewBox="0 0 24 24"><use href="#s-shield"/></svg>10 años de garantía</span>
+      <span class="em-badge eb3" data-reveal="manual"><svg viewBox="0 0 14 14"><use href="#s-star"/></svg>4,9 ★</span>
     </div>
     <a class="cue" id="cue" href="#logros" data-reveal="manual" aria-label="Desliza para descubrir">
       <span class="cue-mouse"></span><span>Desliza para descubrir</span>
@@ -713,7 +848,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <p class="sec-intro" data-reveal style="--d:.15s">Seis disciplinas, un mismo estándar: lo extraordinario. Cada servicio incluye ingeniería, ejecución artesanal y certificado oficial.</p>
     </div>
     <div class="svc-grid">
-      <article class="svc" data-reveal>
+      <article class="svc" data-reveal style="--acc:#E8B84B;--acc-soft:rgba(232,184,75,.4)">
         <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path pathLength="1" d="M8 22 24 8l16 14"/><path pathLength="1" d="M12 20v20h24V20"/>
           <path pathLength="1" d="M26 22l-6 9h4l-2 7 8-10h-4l2-6z"/>
@@ -723,8 +858,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <div class="svc-chips"><span class="chip">Cuadros a medida</span><span class="chip">Iluminación escénica</span><span class="chip">Certificado oficial</span></div>
         <button class="svc-cta" type="button" data-service="Residencial Premium">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
-      <article class="svc" data-reveal style="--d:.1s">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <article class="svc" data-reveal style="--d:.1s;--acc:#4FD9FF;--acc-soft:rgba(79,217,255,.4)">
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gVolt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path pathLength="1" d="M6 40h36"/><path pathLength="1" d="M10 40V22l10 6v-6l10 6V14h10v26"/>
           <path pathLength="1" d="M33 14V8h4v6"/><path pathLength="1" d="M14 34h4m6 0h4m6 0h4"/>
         </svg>
@@ -733,8 +868,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <div class="svc-chips"><span class="chip">Media tensión</span><span class="chip">Tableros inteligentes</span><span class="chip">Eficiencia energética</span></div>
         <button class="svc-cta" type="button" data-service="Comercial & Industrial">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
-      <article class="svc" data-reveal style="--d:.2s">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <article class="svc" data-reveal style="--d:.2s;--acc:#FF9E3D;--acc-soft:rgba(255,158,61,.4)">
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gAmber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <circle pathLength="1" cx="36" cy="12" r="5"/>
           <path pathLength="1" d="M36 3v2m0 14v2M27 12h2m14 0h2M29.5 5.5 31 7m10 10 1.5 1.5m0-13L41 7M31 17l-1.5 1.5"/>
           <path pathLength="1" d="M6 26h28l4 14H10z"/><path pathLength="1" d="M13 26l4 14m3-14 4 14m3-14 4 14M8.5 33H36"/>
@@ -744,8 +879,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <div class="svc-chips"><span class="chip">Fotovoltaica</span><span class="chip">Baterías LFP</span><span class="chip">Conmutación instantánea</span></div>
         <button class="svc-cta" type="button" data-service="Solar & Respaldo">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
-      <article class="svc" data-reveal style="--d:.1s">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <article class="svc" data-reveal style="--d:.1s;--acc:#8F7BFF;--acc-soft:rgba(143,123,255,.4)">
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gViolet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path pathLength="1" d="M10 20 24 9l14 11v20H10z"/><rect pathLength="1" x="18" y="22" width="12" height="12" rx="2"/>
           <path pathLength="1" d="M21 22v-4m6 4v-4m-6 20v-4m6 4v-4m-12-9h-4m4 6h-4m16-6h4m-4 6h4"/>
           <circle pathLength="1" cx="24" cy="28" r="2"/>
@@ -755,8 +890,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <div class="svc-chips"><span class="chip">KNX · DALI</span><span class="chip">Control por voz</span><span class="chip">Escenas de autor</span></div>
         <button class="svc-cta" type="button" data-service="Domótica & KNX">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
-      <article class="svc" data-reveal style="--d:.2s">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <article class="svc" data-reveal style="--d:.2s;--acc:#FF7AB8;--acc-soft:rgba(255,122,184,.4)">
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gRose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path pathLength="1" d="M24 4v8"/><path pathLength="1" d="M10 18q0 8 14 8t14-8"/><path pathLength="1" d="M24 12v14"/>
           <path pathLength="1" d="M10 18v-5m28 5v-5m-14 13v-5"/>
           <circle pathLength="1" cx="10" cy="11" r="1.8"/><circle pathLength="1" cx="38" cy="11" r="1.8"/><circle pathLength="1" cx="24" cy="19" r="1.8"/>
@@ -767,8 +902,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <div class="svc-chips"><span class="chip">Estudio lumínico</span><span class="chip">Regulación DALI</span><span class="chip">Fachadas &amp; jardines</span></div>
         <button class="svc-cta" type="button" data-service="Iluminación Arquitectónica">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
-      <article class="svc" data-reveal style="--d:.3s">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <article class="svc" data-reveal style="--d:.3s;--acc:#3ED598;--acc-soft:rgba(62,213,152,.4)">
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGreen)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path pathLength="1" d="M24 5l15 6v13c0 10-7 16-15 19-8-3-15-9-15-19V11z"/>
           <path pathLength="1" d="M14 26h6l3-6 4 12 3-6h4"/>
         </svg>
@@ -790,7 +925,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <div class="works-grid">
       <figure class="work" data-scene="skyline" data-reveal="fade">
         <div class="work-frame">
-          <canvas role="img" aria-label="Pintura digital: skyline nocturno de Madrid con ventanas iluminadas y tendido eléctrico"></canvas>
+          <canvas role="img" aria-label="Pintura digital: skyline nocturno de Madrid con auroras, ventanas iluminadas y tendido eléctrico"></canvas>
+          <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
           <span class="work-badge">Domótica integral</span>
         </div>
@@ -803,6 +939,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <figure class="work" data-scene="solar" data-reveal="fade" style="--d:.12s">
         <div class="work-frame">
           <canvas role="img" aria-label="Pintura digital: campo de paneles solares al atardecer entre viñedos"></canvas>
+          <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
           <span class="work-badge">Planta FV · 2,4 MW</span>
         </div>
@@ -815,6 +952,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <figure class="work" data-scene="hotel" data-reveal="fade">
         <div class="work-frame">
           <canvas role="img" aria-label="Pintura digital: gran lámpara de araña dorada en el lobby de un hotel de lujo"></canvas>
+          <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
           <span class="work-badge">Iluminación &amp; respaldo</span>
         </div>
@@ -827,6 +965,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <figure class="work" data-scene="substation" data-reveal="fade" style="--d:.12s">
         <div class="work-frame">
           <canvas role="img" aria-label="Pintura digital: subestación eléctrica nocturna con torres y destellos de corona"></canvas>
+          <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
           <span class="work-badge">Media tensión · 34,5 kV</span>
         </div>
@@ -840,10 +979,50 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <p class="collection-note" data-reveal>— colección permanente · técnica: energía sobre lienzo —</p>
   </section>
 
+  <!-- ═══════════ LABORATORIO DE LUZ (DEMO) ═══════════ -->
+  <section id="demo" class="container" data-nav>
+    <div class="sec-head">
+      <div class="kicker" data-reveal>04 · Laboratorio de luz</div>
+      <h2 class="gilded" data-paint="chars" data-auto data-brush="gold" data-speed="760">Toca la luz, siente la magia</h2>
+      <p class="sec-intro" data-reveal style="--d:.15s">Una mini demo real de domótica: elige una escena y mira cómo cambia el ambiente al instante. Así se siente una casa LUXVOLT. ✨</p>
+    </div>
+    <div class="demo-grid">
+      <div data-reveal="left">
+        <div class="room" id="room">
+          <div class="room-amb" id="ambA"></div>
+          <div class="room-amb" id="ambB"></div>
+          <div class="room-window"><i></i><i></i><i></i><i></i></div>
+          <span class="lamp-cord"></span>
+          <span class="lamp-glow"></span>
+          <span class="lamp-shade"></span>
+          <div class="room-sofa"></div>
+          <div class="room-plant"></div>
+          <div class="room-floor"></div>
+          <div class="room-strip"></div>
+          <i class="room-spark rs1"></i><i class="room-spark rs2"></i><i class="room-spark rs3"></i><i class="room-spark rs4"></i><i class="room-spark rs5"></i>
+          <span class="room-tag" id="roomTag">Escena · Cena</span>
+        </div>
+      </div>
+      <div class="demo-panel" data-reveal="right" style="--d:.1s">
+        <p class="demo-hint"><span class="live-dot"></span>Demo en vivo — elige una escena:</p>
+        <div class="scene-btns" id="sceneBtns">
+          <button class="scene-btn active" type="button" data-scene="cena" style="--sc:#FFC24D" aria-pressed="true">🕯️ Cena</button>
+          <button class="scene-btn" type="button" data-scene="cine" style="--sc:#58B6FF" aria-pressed="false">🎬 Cine</button>
+          <button class="scene-btn" type="button" data-scene="fiesta" style="--sc:#FF7AB8" aria-pressed="false">🎉 Fiesta</button>
+          <button class="scene-btn" type="button" data-scene="relax" style="--sc:#3ED598" aria-pressed="false">🌿 Relax</button>
+          <button class="scene-btn" type="button" data-scene="lectura" style="--sc:#F6D98A" aria-pressed="false">📖 Lectura</button>
+        </div>
+        <div class="scene-info"><b id="sceneName">Cena</b><p id="sceneDesc">Ámbar cálido de 2700 K: la mesa brilla, las sombras se suavizan y la conversación fluye.</p></div>
+        <div class="scene-meter"><span>Intensidad</span><div class="meter"><i id="meterFill"></i></div><span id="meterVal">70 %</span></div>
+        <p class="demo-note">Demo interactiva · En tu casa lo hacemos real con KNX y DALI, con un solo toque o por voz.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════ MÉTODO ═══════════ -->
   <section id="metodo" class="container" data-nav>
     <div class="sec-head">
-      <div class="kicker" data-reveal>04 · El método</div>
+      <div class="kicker" data-reveal>05 · El método</div>
       <h2 class="gilded" data-paint="chars" data-auto data-brush="gold" data-speed="760">Cinco trazos, una obra maestra</h2>
       <p class="sec-intro" data-reveal style="--d:.15s">Un proceso transparente, con hitos firmados contigo en cada fase. La línea dorada avanza a tu ritmo, como nuestras obras.</p>
     </div>
@@ -868,8 +1047,9 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   <!-- ═══════════ VOCES ═══════════ -->
   <section id="voces" class="container">
     <div class="sec-head">
-      <div class="kicker" data-reveal>05 · Voces</div>
+      <div class="kicker" data-reveal>06 · Voces</div>
       <h2 class="gilded" data-paint="chars" data-auto data-brush="gold" data-speed="760">Clientes que ya brillan</h2>
+      <div class="rating-chip" data-reveal style="--d:.15s"><svg viewBox="0 0 14 14"><use href="#s-star"/></svg>4,9/5 · 312 reseñas verificadas</div>
     </div>
     <div class="quotes">
       <article class="quote" data-reveal>
@@ -893,7 +1073,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   <!-- ═══════════ CONTACTO ═══════════ -->
   <section id="contacto" class="container" data-nav>
     <div class="sec-head">
-      <div class="kicker" data-reveal>06 · Hablemos</div>
+      <div class="kicker" data-reveal>07 · Hablemos</div>
       <h2 class="gilded" data-paint="chars" data-auto data-brush="gold" data-speed="760">Encendamos tu proyecto</h2>
       <p class="sec-intro" data-reveal style="--d:.15s">Cuéntanos tu idea y un ingeniero de atelier te responderá en menos de 24 horas laborables.</p>
     </div>
@@ -1001,7 +1181,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <div data-reveal="fade" style="--d:.1s">
         <h4>Explorar</h4>
         <div class="foot-links">
-          <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#metodo">Método</a><a href="#contacto">Contacto</a>
+          <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#demo">Demo de luz</a><a href="#contacto">Contacto</a>
         </div>
       </div>
       <div data-reveal="fade" style="--d:.2s">
@@ -1028,7 +1208,10 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   </div>
 </footer>
 
-<button id="topBtn" type="button" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><use href="#s-up"/></svg></button>
+<button id="topBtn" type="button" aria-label="Volver arriba">
+  <svg class="ring" viewBox="0 0 49 49" aria-hidden="true"><circle id="topRing" cx="24.5" cy="24.5" r="22" pathLength="1" fill="none" stroke="#1A1206" stroke-width="2.5" stroke-dasharray="1" stroke-dashoffset="1" opacity=".55"/></svg>
+  <svg viewBox="0 0 24 24"><use href="#s-up"/></svg>
+</button>
 <div id="toasts" aria-live="polite" role="status"></div>
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-scrim" data-close-modal></div>
@@ -1120,7 +1303,9 @@ const COLORS={
   gold:{main:'#E8B84B',light:'#F6D98A',rgb:'232,184,75'},
   cyan:{main:'#4FD9FF',light:'#B5F1FF',rgb:'79,217,255'},
   amber:{main:'#FF9E3D',light:'#FFD9A8',rgb:'255,158,61'},
-  violet:{main:'#8F7BFF',light:'#CFC5FF',rgb:'143,123,255'}
+  violet:{main:'#8F7BFF',light:'#CFC5FF',rgb:'143,123,255'},
+  rose:{main:'#FF7AB8',light:'#FFC7E3',rgb:'255,122,184'},
+  green:{main:'#3ED598',light:'#B8F5DC',rgb:'62,213,152'}
 };
 const sprites={};
 function makeSprite(rgb){ const c=document.createElement('canvas'); c.width=c.height=64;
@@ -1377,8 +1562,15 @@ function vignette(c,w,h,a){ const g=c.createRadialGradient(w/2,h/2,Math.min(w,h)
 const SCENES={
 skyline(c,w,h){ const R=mulberry(7);
   c.fillStyle=lg(c,0,0,0,h,[[0,'#0B1030'],[.42,'#1A1440'],[.62,'#3A1E4E'],[.75,'#0A0F1F'],[1,'#060913']]); c.fillRect(0,0,w,h);
+  c.fillStyle='rgba(62,213,152,.07)';
+  c.beginPath(); c.ellipse(w*.3,h*.18,w*.42,h*.1,-.2,0,7); c.fill();
+  c.fillStyle='rgba(143,123,255,.08)';
+  c.beginPath(); c.ellipse(w*.65,h*.1,w*.4,h*.08,.15,0,7); c.fill();
   for(let i=0;i<110;i++){ const x=R()*w,y=R()*h*.5,s=R()*1.4+.4;
     c.fillStyle='rgba(240,240,255,'+(R()*.7+.15)+')'; c.fillRect(x,y,s,s); }
+  c.strokeStyle='rgba(255,255,255,.7)'; c.lineWidth=1.2;
+  c.beginPath(); c.moveTo(w*.2,h*.08); c.lineTo(w*.3,h*.14); c.stroke();
+  glow(c,w*.3,h*.14,6,'255,255,255',.8);
   glow(c,w*.78,h*.16,60,'246,238,220',.5);
   c.fillStyle='#F4EEDC'; c.beginPath(); c.arc(w*.78,h*.16,13,0,7); c.fill();
   glow(c,w*.5,h*.62,w*.5,'232,184,75',.12);
@@ -1392,10 +1584,10 @@ skyline(c,w,h){ const R=mulberry(7);
     c.fillStyle='rgba(232,184,75,.14)'; c.fillRect(bx,by,bw,1.4);
     const cols=Math.floor(bw/11), rows=Math.floor(bh/15);
     for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){ if(R()<.3){
-      const warm=R()<.7;
-      c.fillStyle=warm?'rgba(255,196,110,'+(.5+R()*.5)+')':'rgba(140,220,255,'+(.4+R()*.5)+')';
+      const pick=R(), col=pick<.55?'255,196,110':pick<.8?'140,220,255':pick<.92?'255,150,200':'150,240,190';
+      c.fillStyle='rgba('+col+','+(.5+R()*.5)+')';
       c.fillRect(bx+4+i*11,by+6+j*15,3.4,5.4);
-      if(R()<.08)glow(c,bx+5.5+i*11,by+8.5+j*15,9,warm?'255,196,110':'140,220,255',.35);
+      if(R()<.08)glow(c,bx+5.5+i*11,by+8.5+j*15,9,col,.35);
     }}
     if(bh>h*.4){ c.strokeStyle='rgba(160,170,200,.5)'; c.lineWidth=1;
       c.beginPath(); c.moveTo(bx+bw/2,by); c.lineTo(bx+bw/2,by-12); c.stroke();
@@ -1414,9 +1606,14 @@ skyline(c,w,h){ const R=mulberry(7);
   vignette(c,w,h,.42);
 },
 solar(c,w,h){ const R=mulberry(21);
-  c.fillStyle=lg(c,0,0,0,h*.55,[[0,'#2A1230'],[.4,'#7A2E4A'],[.75,'#E8703A'],[1,'#F5B84D']]); c.fillRect(0,0,w,h*.55);
-  glow(c,w*.5,h*.47,95,'255,214,140',.75);
+  c.fillStyle=lg(c,0,0,0,h*.55,[[0,'#1B0B33'],[.35,'#8A2E5E'],[.7,'#FF7A3D'],[.92,'#FFC94D'],[1,'#FFE9B0']]); c.fillRect(0,0,w,h*.55);
+  glow(c,w*.5,h*.47,110,'255,214,140',.8);
+  c.strokeStyle='rgba(255,220,150,.22)'; c.lineWidth=1;
+  for(let i=0;i<12;i++){ const a=i/12*Math.PI*2;
+    c.beginPath(); c.moveTo(w*.5+Math.cos(a)*26,h*.47+Math.sin(a)*26);
+    c.lineTo(w*.5+Math.cos(a)*(58+R()*34),h*.47+Math.sin(a)*(58+R()*34)); c.stroke(); }
   c.fillStyle='#FFE9B0'; c.beginPath(); c.arc(w*.5,h*.47,20,0,7); c.fill();
+  [[.42,.55],[.36,.62],[.3,.7]].forEach(p=>glow(c,w*p[0],h*p[1],7,'255,214,140',.35));
   c.fillStyle='rgba(42,18,48,.16)';
   for(let i=0;i<5;i++){ const cx=R()*w,cy=h*(.1+R()*.2);
     c.beginPath(); c.ellipse(cx,cy,40+R()*70,7+R()*8,0,0,7); c.fill(); }
@@ -1453,6 +1650,8 @@ hotel(c,w,h){ const R=mulberry(33);
   c.strokeStyle='rgba(232,184,75,.13)'; c.lineWidth=1;
   for(let i=0;i<3;i++){ const px=w*(.08+i*.31), pw=w*.22;
     c.strokeRect(px,h*.14,pw,h*.58); c.strokeRect(px+6,h*.14+6,pw-12,h*.58-12); }
+  glow(c,w*.19,h*.72,36,'143,123,255',.3);
+  glow(c,w*.81,h*.72,36,'79,217,255',.3);
   [w*.145,w*.855].forEach(wx=>{ const ww=w*.1, wy=h*.2, wh=h*.42;
     c.beginPath(); c.moveTo(wx-ww/2,wy+wh); c.lineTo(wx-ww/2,wy+ww/2);
     c.arc(wx,wy+ww/2,ww/2,Math.PI,0); c.lineTo(wx+ww/2,wy+wh); c.closePath();
@@ -1479,6 +1678,8 @@ hotel(c,w,h){ const R=mulberry(33);
       c.fillStyle='#F4EEDC'; c.fillRect(px-1.3,py-12,2.6,5.5);
       glow(c,px,py-14,9,'255,208,120',.85);
       c.fillStyle='#FFF3D0'; c.beginPath(); c.arc(px,py-13.5,1.6,0,7); c.fill();
+      if(R()<.25){ c.fillStyle=R()<.5?'rgba(140,220,255,.9)':'rgba(255,150,200,.9)';
+        c.fillRect(px+3,py-6,1.6,1.6); }
       if(R()<.6){ c.strokeStyle='rgba(244,238,220,.4)';
         c.beginPath(); c.moveTo(px,py+2); c.lineTo(px,py+8+R()*6); c.stroke();
         if(R()<.3)glow(c,px,py+11,4,'140,220,255',.5); }
@@ -1510,6 +1711,8 @@ substation(c,w,h){ const R=mulberry(49);
     c.moveTo(tx-w1,y1); c.lineTo(tx+w1,y1); c.stroke(); }
   [[.24,.3],[.3,.36],[.36,.42]].forEach(arm=>{ const ay=h*arm[1];
     c.beginPath(); c.moveTo(tx-twr*1.5,ay); c.lineTo(tx+twr*1.5,ay); c.stroke(); });
+  glow(c,tx-twr*1.5,h*.3,9,'143,123,255',.5);
+  glow(c,tx+twr*1.5,h*.36,9,'143,123,255',.5);
   glow(c,tx,tTop-4,8,'255,90,90',.9);
   c.fillStyle='#FF6262'; c.beginPath(); c.arc(tx,tTop-4,2.2,0,7); c.fill();
   const busY=[h*.3,h*.36,h*.42];
@@ -1528,6 +1731,8 @@ substation(c,w,h){ const R=mulberry(49);
       glow(c,px,by-16,6,'79,217,255',.7);
       c.strokeStyle='rgba(42,90,102,.9)';
       c.beginPath(); c.moveTo(px,by-16); c.quadraticCurveTo(px+w*.04,busY[b]+h*.05,px+w*.09,busY[b]+h*.005); c.stroke(); } });
+  c.fillStyle='#3ED598';
+  [[.58,.66],[.62,.66],[.8,.66],[.84,.66]].forEach(p=>{ c.fillRect(w*p[0],h*p[1],2,2); glow(c,w*p[0]+1,h*p[1]+1,5,'62,213,152',.6); });
   c.fillStyle='#0B1B22'; c.fillRect(w*.05,h*.6,w*.1,h*.1);
   c.strokeStyle='#1E4652'; c.strokeRect(w*.05,h*.6,w*.1,h*.1);
   glow(c,w*.1,h*.65,12,'255,196,110',.6);
@@ -1638,6 +1843,131 @@ function updateMethod(){ if(!mPath)return;
   lastP=p;
 }
 
+/* ═════════════════ NUEVO: pulsos de corriente en el héroe ═════════════════ */
+function initHeroPulses(){
+  if(RM)return;
+  const paths=$$('.hero-circuits path'), dots=[$('#hd0'),$('#hd1'),$('#hd2')];
+  if(paths.length<3||!dots[0]||!dots[1]||!dots[2])return;
+  let lens=[];
+  try{ lens=[paths[0].getTotalLength(),paths[1].getTotalLength(),paths[2].getTotalLength()]; }catch(e){ return; }
+  tasks.add(now=>{
+    for(let i=0;i<3;i++){
+      const t=((now/9000)+i*.37)%1;
+      try{ const pt=paths[i].getPointAtLength(t*lens[i]);
+        dots[i].setAttribute('cx',pt.x); dots[i].setAttribute('cy',pt.y);
+        dots[i].setAttribute('opacity',(Math.sin(t*Math.PI)*.9+.1).toFixed(2));
+      }catch(e){}
+    }
+    return true;
+  });
+}
+
+/* ═════════════════ NUEVO: palabra rotativa ═════════════════ */
+let rotorTimer=null;
+function startRotor(){
+  const el=$('#rotorWord'); if(!el||rotorTimer)return;
+  const words=[['residencias','#4FD9FF'],['hoteles boutique','#FF7AB8'],['industria','#FF9E3D'],['viñedos','#3ED598']];
+  let i=0;
+  rotorTimer=setInterval(()=>{
+    if(document.hidden)return;
+    i=(i+1)%words.length;
+    el.classList.add('swap');
+    setTimeout(()=>{ el.textContent=words[i][0]; el.style.color=words[i][1]; el.classList.remove('swap'); },RM?0:280);
+  },2800);
+}
+
+/* ═════════════════ NUEVO: ondas al tocar + botones magnéticos ═════════════════ */
+function initRipples(){
+  if(RM)return;
+  document.addEventListener('pointerdown',e=>{
+    const tg=e.target, b=(tg&&tg.closest)?tg.closest('.btn'):null;
+    if(!b)return;
+    try{
+      const r=b.getBoundingClientRect(), s=Math.max(r.width,r.height);
+      const sp=document.createElement('span'); sp.className='ripple';
+      sp.style.width=sp.style.height=s+'px';
+      sp.style.left=(e.clientX-r.left-s/2)+'px';
+      sp.style.top=(e.clientY-r.top-s/2)+'px';
+      b.appendChild(sp); setTimeout(()=>rm(sp),650);
+    }catch(err){}
+  },{passive:true});
+}
+function initMagnet(){
+  if(!FINE||RM)return;
+  $$('.btn-gold').forEach(b=>{
+    b.addEventListener('pointermove',e=>{
+      const r=b.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)/r.width*8, dy=(e.clientY-r.top-r.height/2)/r.height*6;
+      b.style.transform='translate('+dx.toFixed(1)+'px,'+(dy-2).toFixed(1)+'px)';
+    });
+    b.addEventListener('pointerleave',()=>{ b.style.transform=''; });
+  });
+}
+
+/* ═════════════════ NUEVO: Laboratorio de luz ═════════════════ */
+const LIGHT={
+  cena:{name:'Cena',desc:'Ámbar cálido de 2700 K: la mesa brilla, las sombras se suavizan y la conversación fluye.',amb:'radial-gradient(120% 100% at 50% 0%,#3A2410 0%,#1C1006 62%,#0D0703 100%)',lamp:'#FFC24D',win:'#232C4E',strip:'#E8B84B',glow:.55,meter:70,color:'amber',party:false},
+  cine:{name:'Cine',desc:'Azul profundo y luz indirecta: contraste perfecto para la pantalla, cero reflejos.',amb:'radial-gradient(120% 100% at 50% 0%,#101B3A 0%,#0A1024 60%,#05070F 100%)',lamp:'#58B6FF',win:'#0B1226',strip:'#4FD9FF',glow:.22,meter:25,color:'cyan',party:false},
+  fiesta:{name:'Fiesta',desc:'Color en movimiento, destellos sincronizados y energía pura. La casa se vuelve pista de baile.',amb:'radial-gradient(120% 100% at 50% 0%,#3A1030 0%,#1C0A24 60%,#0D0512 100%)',lamp:'#FF7AB8',win:'#2A1440',strip:'#8F7BFF',glow:.7,meter:100,color:'rose',party:true},
+  relax:{name:'Relax',desc:'Verde suave y tenue: baja el pulso, sube la calma. Ideal para desconectar al final del día.',amb:'radial-gradient(120% 100% at 50% 0%,#0E2A20 0%,#081712 60%,#040B08 100%)',lamp:'#3ED598',win:'#12241E',strip:'#3ED598',glow:.4,meter:45,color:'green',party:false},
+  lectura:{name:'Lectura',desc:'Blanco neutro de 4000 K, uniforme y sin fatiga visual: cada página, nítida.',amb:'radial-gradient(120% 100% at 50% 0%,#3A3226 0%,#201A12 60%,#100D08 100%)',lamp:'#FFF3D0',win:'#2E3A5C',strip:'#F6D98A',glow:.85,meter:90,color:'gold',party:false}
+};
+let ambFlip=false;
+function applyScene(key,btn){
+  const s=LIGHT[key]; if(!s)return;
+  const room=$('#room'); if(!room)return;
+  const A=$('#ambA'), B=$('#ambB');
+  if(A&&B){
+    const show=ambFlip?A:B, hide=ambFlip?B:A;
+    show.style.background=s.amb;
+    show.style.opacity=1; hide.style.opacity=0;
+    ambFlip=!ambFlip;
+  }
+  room.style.setProperty('--lamp',s.lamp);
+  room.style.setProperty('--win',s.win);
+  room.style.setProperty('--strip',s.strip);
+  room.style.setProperty('--glowA',String(s.glow));
+  room.classList.toggle('party',!!s.party&&!RM);
+  const tag=$('#roomTag'); if(tag)tag.textContent='Escena · '+s.name;
+  const nm=$('#sceneName'), ds=$('#sceneDesc');
+  if(nm)nm.textContent=s.name; if(ds)ds.textContent=s.desc;
+  const mf=$('#meterFill'), mv=$('#meterVal');
+  if(mf){ mf.style.width=s.meter+'%'; mf.style.background=s.lamp; }
+  if(mv)mv.textContent=s.meter+' %';
+  $$('.scene-btn').forEach(b=>{ const on=b===btn; b.classList.toggle('active',on); b.setAttribute('aria-pressed',String(on)); });
+}
+function initDemo(){
+  const btns=$$('.scene-btn'); if(!btns.length)return;
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const key=b.dataset.scene;
+    applyScene(key,b);
+    const s=LIGHT[key];
+    if(s&&!RM){ try{ const r=b.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2,s.color,7,110);}catch(e){} }
+    if(s){ const base={cena:523.25,cine:392,fiesta:659.25,relax:440,lectura:587.33}[key]||523.25;
+      Sound.blip(base,.3,.04); Sound.blip(base*1.25,.3,.035,'sine',.08); Sound.blip(base*1.5,.4,.03,'sine',.16); }
+  }));
+  applyScene('cena',btns[0]);
+}
+
+/* ═════════════════ NUEVO: confeti de celebración ═════════════════ */
+function celebrate(big){
+  if(RM)return;
+  const cols=['gold','cyan','violet','amber','rose','green'], n=big?26:10;
+  for(let i=0;i<n;i++){
+    setTimeout(()=>{ burst(rand(innerWidth*.12,innerWidth*.88),rand(innerHeight*.1,innerHeight*.5),cols[i%6],big?7:5,big?160:120); },i*60);
+  }
+}
+
+/* ═════════════════ NUEVO: testimonios que se iluminan por turno ═════════════════ */
+function initQuoteCycle(){
+  const qs=$$('.quote'); if(qs.length<2||RM)return;
+  let i=0;
+  setInterval(()=>{ if(document.hidden)return;
+    qs.forEach(q=>q.classList.remove('glow'));
+    qs[i%qs.length].classList.add('glow'); i++;
+  },3600);
+}
+
 /* ═════════════════ Observadores (con alternativa sin IntersectionObserver) ═════════════════ */
 function staticReveal(){
   $$('[data-reveal]').forEach(el=>el.classList.add('in'));
@@ -1685,7 +2015,9 @@ function onScroll(){ if(ticking)return; ticking=true;
     const y=scrollY, nav=$('#nav');
     nav.classList.toggle('scrolled',y>30);
     const dh=document.documentElement.scrollHeight-innerHeight;
-    $('#progress').style.width=(dh>0?clamp(y/dh,0,1)*100:0)+'%';
+    const prog=dh>0?clamp(y/dh,0,1):0;
+    $('#progress').style.width=(prog*100)+'%';
+    const tr=$('#topRing'); if(tr)tr.style.strokeDashoffset=String(1-prog);
     $('#topBtn').classList.toggle('show',y>600);
     if(!RM){ const ew=$('#emblemWrap');
       if(ew)ew.style.transform='translateY('+Math.min(y*.12,130)+'px)'; }
@@ -1755,7 +2087,7 @@ function initForm(){
       form.style.display='none';
       $('#okRef').textContent='LV-'+new Date().getFullYear()+'-'+Math.floor(1000+Math.random()*9000);
       $('#formOk').classList.add('show');
-      Sound.success(); toast('Solicitud enviada correctamente.','ok');
+      Sound.success(); celebrate(true); toast('Solicitud enviada correctamente.','ok');
     },1100);
   });
   $('#newReq').addEventListener('click',()=>{
@@ -1859,7 +2191,11 @@ async function heroSequence(){
   $('#heroCtas').classList.add('in');
   await wait(140);
   $('#heroChips').classList.add('in');
+  $('#heroRotor').classList.add('in');
+  $$('.em-badge').forEach(b=>b.classList.add('in'));
   $('#cue').classList.add('in');
+  startRotor();
+  celebrate(false);
   Sound.chime();
 }
 function bootFail(){
@@ -1905,6 +2241,11 @@ function init(){
   mPath=$('#mPath'); mDot=$('#mDot'); mRail=$('#mRail'); mSteps=$$('.step');
   try{ mLen=mPath.getTotalLength(); }catch(e){ mLen=1000; }
   initObservers(); initForm(); initInteractions();
+  try{ initHeroPulses(); }catch(e){}
+  try{ initRipples(); }catch(e){}
+  try{ initMagnet(); }catch(e){}
+  try{ initDemo(); }catch(e){}
+  try{ initQuoteCycle(); }catch(e){}
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onResize);
   onScroll(); updateMethod();
