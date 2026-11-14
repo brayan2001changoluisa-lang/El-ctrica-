@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E8B84B' d='M13 2 4 14h6l-2 8L18 9h-6l1-7z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
 <noscript><style>
   #veil{display:none!important}
   #nav{opacity:1!important;transform:none!important}
@@ -26,10 +26,13 @@
   .stat-label,.work-meta{opacity:1!important;transform:none!important}
   .step{opacity:1!important;transform:none!important}
   .m-dot{display:none!important}
+  .work-frame{background-image:var(--photo);background-size:cover;background-position:center}
+  .work-idle{display:none!important}
 </style></noscript>
 <style>
 /* ============================================================
-   LUXVOLT · Sistema visual — "Electricidad de atelier" · EDICIÓN VIVA
+   LUXVOLT · "Electricidad de atelier" · EDICIÓN REAL
+   Tipografía: Unbounded (display) · Space Grotesk (texto) · Mr Dafoe (firma)
    ============================================================ */
 :root{
   --bg0:#05070F; --bg1:#0A101F; --surface:rgba(15,22,40,.72); --surface2:#0E1526;
@@ -42,9 +45,9 @@
   --grad-gold:linear-gradient(120deg,#F6D98A 0%,#E8B84B 45%,#C9973B 100%);
   --grad-volt:linear-gradient(120deg,#4FD9FF,#8F7BFF);
   --nav-h:76px; --rad:18px;
-  --font-d:'Cinzel',Georgia,serif;
-  --font-b:'Outfit',system-ui,-apple-system,sans-serif;
-  --font-s:'Great Vibes',cursive;
+  --font-d:'Unbounded','Segoe UI',system-ui,sans-serif;
+  --font-b:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  --font-s:'Mr Dafoe','Segoe Script',cursive;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scrollbar-color:#C9973B #0A101F;scrollbar-width:thin;-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -67,7 +70,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 .skip{position:fixed;top:-60px;left:16px;z-index:700;background:var(--gold);color:#1A1206;padding:10px 18px;border-radius:8px;font-weight:600;transition:top .3s}
 .skip:focus{top:12px}
 
-/* ---------- Fondo ambiental por capas ---------- */
+/* ---------- Fondo ambiental ---------- */
 #bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none}
 .bg-mesh{position:absolute;top:0;left:0;right:0;bottom:0;background:
   radial-gradient(52vw 52vw at 12% -6%,rgba(232,184,75,.12),transparent 62%),
@@ -93,21 +96,21 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 #fx{position:fixed;top:0;left:0;right:0;bottom:0;z-index:94;pointer-events:none}
 #brushes{position:fixed;top:0;left:0;right:0;bottom:0;z-index:96;pointer-events:none}
 
-/* ---------- Velo de arranque ---------- */
+/* ---------- Velo ---------- */
 #veil{position:fixed;top:0;left:0;right:0;bottom:0;z-index:600;background:var(--bg0);display:grid;place-items:center;transition:opacity .55s ease}
 #veil.hide{opacity:0;pointer-events:none}
 .veil-inner{text-align:center}
 .veil-bolt{width:52px;height:52px;margin:0 auto 16px;animation:veilPulse 1.4s ease-in-out infinite}
 @keyframes veilPulse{0%,100%{transform:scale(1);opacity:.75;filter:drop-shadow(0 0 6px rgba(232,184,75,.4))}50%{transform:scale(1.12);opacity:1;filter:drop-shadow(0 0 22px rgba(232,184,75,.8))}}
-.veil-word{font-family:var(--font-d);font-weight:700;letter-spacing:.42em;font-size:.85rem;color:var(--gold2);padding-left:.42em}
-.veil-sub{font-family:var(--font-s);font-size:1.35rem;color:var(--dim);margin-top:10px}
+.veil-word{font-family:var(--font-d);font-weight:700;letter-spacing:.3em;font-size:.78rem;color:var(--gold2);padding-left:.3em}
+.veil-sub{font-family:var(--font-s);font-size:1.6rem;color:var(--dim);margin-top:10px}
 .veil-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
 .veil-dots i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:vd 1s ease-in-out infinite}
 .veil-dots i:nth-child(2){background:var(--volt);animation-delay:.15s}
 .veil-dots i:nth-child(3){background:var(--violet);animation-delay:.3s}
 @keyframes vd{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-7px);opacity:1}}
 
-/* ---------- Pinceles de lujo ---------- */
+/* ---------- Pinceles ---------- */
 .brush{position:fixed;left:0;top:0;width:0;height:0;opacity:0;will-change:transform;pointer-events:none}
 .brush svg{position:absolute;left:-32px;top:-140px;width:64px;height:150px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.55))}
 .brush-glow{position:absolute;left:-45px;top:-45px;width:90px;height:90px;border-radius:50%;mix-blend-mode:screen;
@@ -118,7 +121,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   .brush-glow{left:-35px;top:-35px;width:70px;height:70px}
 }
 
-/* ---------- Navegación ---------- */
+/* ---------- Nav ---------- */
 #nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;
   padding-left:28px;padding-right:28px;padding-left:clamp(16px,4vw,44px);padding-right:clamp(16px,4vw,44px);gap:26px;
   transition:background .4s,box-shadow .4s,border-color .4s;
@@ -127,11 +130,11 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 #nav.scrolled{background:rgba(5,7,15,.84);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-color:var(--line);box-shadow:0 14px 44px -18px rgba(0,0,0,.7)}
 .brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
 .brand svg{width:25px;height:25px;filter:drop-shadow(0 0 8px rgba(232,184,75,.55))}
-.brand-word{font-family:var(--font-d);font-weight:700;font-size:1.22rem;letter-spacing:.2em;
+.brand-word{font-family:var(--font-d);font-weight:700;font-size:1.02rem;letter-spacing:.14em;
   background:linear-gradient(110deg,#C9973B,#F6D98A 30%,#FFF3C4 50%,#E8B84B 70%,#C9973B);background-size:220% 100%;
   -webkit-background-clip:text;background-clip:text;color:transparent;animation:goldFlow 8s linear infinite}
 .nav-links{display:flex;gap:22px;gap:clamp(14px,2.4vw,30px);margin-left:auto}
-.nav-links a{position:relative;font-size:.78rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:8px 2px;transition:color .3s}
+.nav-links a{position:relative;font-size:.76rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:8px 2px;transition:color .3s}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1.5px;background:var(--grad-gold);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a.active{color:var(--gold2)}
@@ -173,12 +176,12 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   transform:translateX(102%);visibility:hidden;transition:transform .5s cubic-bezier(.7,0,.2,1),visibility .5s;
   display:flex;flex-direction:column;padding:110px 8vw 40px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #menu.open{transform:none;visibility:visible}
-#menu a.mlink{display:flex;align-items:baseline;gap:16px;font-family:var(--font-d);font-weight:600;font-size:1.7rem;color:var(--ink);padding:15px 0;border-bottom:1px solid var(--line)}
+#menu a.mlink{display:flex;align-items:baseline;gap:16px;font-family:var(--font-d);font-weight:700;font-size:1.25rem;color:var(--ink);padding:15px 0;border-bottom:1px solid var(--line)}
 #menu a.mlink i{font-style:normal;font-family:var(--font-b);font-size:.72rem;letter-spacing:.2em;color:var(--gold)}
 #menu a.mlink:hover{color:var(--gold2)}
 #menu .btn{margin-top:30px}
 .menu-foot{margin-top:auto;padding-top:34px;color:var(--dim);font-size:.85rem}
-.menu-foot .script{font-family:var(--font-s);font-size:1.5rem;color:var(--gold2)}
+.menu-foot .script{font-family:var(--font-s);font-size:1.7rem;color:var(--gold2)}
 
 /* ---------- Héroe ---------- */
 main{position:relative;z-index:2}
@@ -197,14 +200,14 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .hdot{opacity:0}
 @keyframes dashdrift{to{stroke-dashoffset:-360}}
 @keyframes nodePulse{0%,100%{opacity:.08}50%{opacity:.3}}
-.eyebrow-script{font-family:var(--font-s);font-size:1.9rem;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--gold2);transform:rotate(-2deg);display:inline-block;text-shadow:0 0 24px rgba(232,184,75,.35)}
-.hero h1{font-family:var(--font-d);font-weight:900;font-size:4.8rem;font-size:clamp(3.2rem,8.6vw,6.6rem);line-height:1.04;letter-spacing:.05em;margin:10px 0 14px;position:relative}
+.eyebrow-script{font-family:var(--font-s);font-size:2.2rem;font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--gold2);transform:rotate(-2deg);display:inline-block;text-shadow:0 0 24px rgba(232,184,75,.35)}
+.hero h1{font-family:var(--font-d);font-weight:900;font-size:4rem;font-size:clamp(2.5rem,7vw,5.2rem);line-height:1.06;letter-spacing:.01em;margin:10px 0 16px;position:relative}
 .hero h1::before{content:"";position:absolute;left:-8%;top:-30%;width:80%;height:160%;background:radial-gradient(closest-side,rgba(232,184,75,.13),transparent);pointer-events:none}
 .gilded .u{background:linear-gradient(110deg,#C9973B,#F6D98A 30%,#FFF3C4 50%,#E8B84B 70%,#C9973B);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
 #heroTitle .u.ink{animation:inkGlow 1.15s ease-out,goldFlow 7s linear infinite}
 @keyframes goldFlow{to{background-position:-220% 0}}
-.tagline{font-family:var(--font-d);font-weight:600;font-size:1.25rem;font-size:clamp(1.05rem,2.3vw,1.5rem);letter-spacing:.1em;color:var(--gold2);text-transform:uppercase;margin-bottom:18px}
-.hero-desc{color:var(--muted);font-size:1.05rem;font-size:clamp(1rem,1.4vw,1.12rem);max-width:56ch}
+.tagline{font-family:var(--font-d);font-weight:500;font-size:1.1rem;font-size:clamp(.92rem,1.9vw,1.22rem);letter-spacing:.16em;color:var(--gold2);text-transform:uppercase;margin-bottom:18px}
+.hero-desc{color:var(--muted);font-weight:400;font-size:1.05rem;font-size:clamp(1rem,1.4vw,1.12rem);max-width:56ch}
 .hero-rotor{margin-top:14px;font-size:1.02rem;color:var(--muted)}
 .rotor-word{display:inline-block;font-weight:600;color:var(--volt);transition:opacity .28s ease,transform .28s ease}
 .rotor-word.swap{opacity:0;transform:translateY(8px)}
@@ -274,12 +277,12 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .marquee-track span:nth-child(3n+1)::after{color:var(--rose)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
-/* ---------- Cabeceras de sección ---------- */
+/* ---------- Cabeceras ---------- */
 .sec-head{margin-bottom:48px;margin-bottom:clamp(38px,6vh,60px)}
 .kicker{display:flex;align-items:center;gap:14px;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .kicker::before{content:"";width:38px;height:1px;background:var(--grad-gold)}
-.sec-head h2{font-family:var(--font-d);font-weight:700;font-size:2.5rem;font-size:clamp(1.9rem,4.6vw,3.2rem);letter-spacing:.04em;line-height:1.15}
-.sec-intro{color:var(--muted);max-width:62ch;margin-top:14px;font-size:1.02rem}
+.sec-head h2{font-family:var(--font-d);font-weight:700;font-size:2rem;font-size:clamp(1.5rem,3.4vw,2.5rem);letter-spacing:0;line-height:1.22}
+.sec-intro{color:var(--muted);font-weight:400;max-width:62ch;margin-top:14px;font-size:1.02rem}
 
 /* ---------- Cifras ---------- */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -288,8 +291,8 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .stat::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(246,217,138,.6),transparent)}
 .stat.lit{border-color:var(--line2);box-shadow:0 18px 50px -24px rgba(232,184,75,.4)}
 .stat-top{display:flex;align-items:baseline;gap:4px}
-.stat-val{font-family:var(--font-d);font-weight:700;font-size:2.7rem;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
-.stat-suffix{font-family:var(--font-d);font-weight:700;font-size:1.4rem;color:var(--gold2)}
+.stat-val{font-family:var(--font-d);font-weight:700;font-size:2.2rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.1;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat-suffix{font-family:var(--font-d);font-weight:700;font-size:1.2rem;color:var(--gold2)}
 .stat-line{height:2px;background:linear-gradient(90deg,var(--gold),var(--amber),transparent);transform:scaleX(0);transform-origin:left;margin:12px 0 14px;box-shadow:0 0 12px rgba(232,184,75,.5);transition:transform .3s}
 .stat-label{color:var(--muted);font-size:.94rem;opacity:0;transform:translateY(6px);transition:opacity .6s,transform .6s}
 .stat-label.in{opacity:1;transform:none}
@@ -308,7 +311,7 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .in .icon-draw path,.in .icon-draw circle,.in .icon-draw rect{stroke-dashoffset:0}
 .in .icon-draw *:nth-child(2){transition-delay:.2s}.in .icon-draw *:nth-child(3){transition-delay:.4s}
 .in .icon-draw *:nth-child(4){transition-delay:.6s}.in .icon-draw *:nth-child(5){transition-delay:.75s}
-.svc h3{font-family:var(--font-d);font-weight:600;font-size:1.14rem;letter-spacing:.04em;margin:20px 0 10px;min-height:1.5em}
+.svc h3{font-family:var(--font-d);font-weight:700;font-size:.98rem;letter-spacing:.01em;line-height:1.35;margin:20px 0 10px;min-height:2.6em}
 .svc p{color:var(--muted);font-size:.95rem;line-height:1.7}
 .svc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
 .chip{font-size:.68rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border:1px solid var(--line);border-radius:999px;color:var(--gold2);background:rgba(232,184,75,.05)}
@@ -316,12 +319,10 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .svc-cta:hover{gap:13px;color:var(--acc,var(--gold))}
 .svc-cta svg{width:14px;height:14px}
 
-/* ---------- Galería de obras ---------- */
+/* ---------- Galería (fotografía real) ---------- */
 .works-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 30px}
 .work-frame{position:relative;aspect-ratio:3/2;border-radius:14px;overflow:hidden;border:1px solid var(--line2);background:linear-gradient(150deg,#0B1120,#080D19);transition:transform .3s ease,box-shadow .4s;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)}
-@supports not (aspect-ratio:3/2){
-  .work-frame{height:0;padding-bottom:66.66%}
-}
+@supports not (aspect-ratio:3/2){.work-frame{height:0;padding-bottom:66.66%}}
 .work-frame::before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(232,184,75,.24);border-radius:8px;z-index:2;pointer-events:none}
 .work-frame::after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;z-index:3;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,244,214,.14) 50%,transparent 70%);transform:translateX(-130%)}
 .work-frame.done::after{animation:sheen 1.5s ease .25s 1 forwards}
@@ -344,14 +345,16 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .work-frame.painting .work-idle,.work-frame.done .work-idle{opacity:0}
 .work-badge{position:absolute;top:16px;left:16px;z-index:4;font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);background:rgba(5,7,15,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line2);border-radius:999px;padding:6px 13px;opacity:0;transform:translateY(-6px);transition:opacity .5s,transform .5s}
 .work-badge.in{opacity:1;transform:none}
+.work-real{position:absolute;top:16px;right:16px;z-index:4;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:rgba(5,7,15,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line2);border-radius:999px;padding:6px 12px;opacity:0;transform:translateY(-6px);transition:opacity .5s,transform .5s}
+.work-frame.painting .work-real,.work-frame.done .work-real{opacity:1;transform:none}
 .plaque{margin-top:15px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(160deg,#141B2E,#0D1424);border:1px solid var(--line);border-radius:10px;padding:15px 19px}
-.work-title{font-family:var(--font-d);font-weight:600;font-size:1.06rem;letter-spacing:.03em}
+.work-title{font-family:var(--font-d);font-weight:700;font-size:.95rem;letter-spacing:.01em}
 .work-meta{font-size:.78rem;color:var(--dim);margin-top:4px;opacity:0;transition:opacity .7s}
 .work-meta.in{opacity:1}
-.work-num{font-family:var(--font-d);font-size:.78rem;color:var(--gold);letter-spacing:.12em;white-space:nowrap}
-.collection-note{text-align:center;font-family:var(--font-s);font-size:1.5rem;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--gold2);margin-top:44px;opacity:.85}
+.work-num{font-family:var(--font-d);font-size:.72rem;color:var(--gold);letter-spacing:.1em;white-space:nowrap}
+.collection-note{text-align:center;font-family:var(--font-s);font-size:1.8rem;font-size:clamp(1.6rem,2.8vw,2.2rem);color:var(--gold2);margin-top:44px;opacity:.9}
 
-/* ---------- Laboratorio de luz (demo interactiva) ---------- */
+/* ---------- Laboratorio de luz ---------- */
 .demo-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;gap:clamp(26px,4vw,52px);align-items:stretch}
 .room{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line2);
   --lamp:#FFC24D;--win:#232C4E;--strip:#E8B84B;--glowA:.55;
@@ -392,7 +395,7 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .scene-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid var(--line2);color:var(--ink);font-size:.9rem;font-weight:500;background:rgba(232,184,75,.04);transition:transform .2s,border-color .3s,background .3s,box-shadow .3s}
 .scene-btn:hover{transform:translateY(-2px);border-color:var(--sc,var(--gold))}
 .scene-btn.active{border-color:var(--sc,var(--gold));background:rgba(255,255,255,.06);box-shadow:0 0 18px -4px var(--sc,var(--gold));color:var(--gold2)}
-.scene-info b{font-family:var(--font-d);font-size:1.3rem;color:var(--gold2);display:block;margin-bottom:6px}
+.scene-info b{font-family:var(--font-d);font-weight:700;font-size:1.1rem;color:var(--gold2);display:block;margin-bottom:6px}
 .scene-info p{color:var(--muted);font-size:.95rem;min-height:3.2em}
 .scene-meter{display:flex;align-items:center;gap:12px;font-size:.78rem;color:var(--dim)}
 .meter{flex:1;height:8px;border-radius:999px;background:#0A101F;border:1px solid var(--line);overflow:hidden}
@@ -409,10 +412,10 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .step.active{opacity:1;transform:none}
 .step::before{content:"";position:absolute;left:-65px;top:34px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line2);background:var(--bg0);transition:background .5s,box-shadow .5s,border-color .5s}
 .step.active::before{background:var(--grad-gold);border-color:var(--gold);box-shadow:0 0 16px rgba(232,184,75,.7)}
-.step-num{font-family:var(--font-d);font-size:.82rem;letter-spacing:.26em;color:var(--gold)}
-.step h3{font-family:var(--font-d);font-weight:600;font-size:1.32rem;margin:7px 0 8px}
+.step-num{font-family:var(--font-d);font-size:.74rem;letter-spacing:.2em;color:var(--gold)}
+.step h3{font-family:var(--font-d);font-weight:700;font-size:1.12rem;margin:7px 0 8px}
 .step p{color:var(--muted);max-width:54ch}
-.step-ghost{position:absolute;right:0;top:6px;font-family:var(--font-d);font-weight:900;font-size:5.4rem;color:var(--gold);opacity:.055;pointer-events:none;line-height:1}
+.step-ghost{position:absolute;right:0;top:6px;font-family:var(--font-d);font-weight:900;font-size:5rem;color:var(--gold);opacity:.055;pointer-events:none;line-height:1}
 
 /* ---------- Voces ---------- */
 .rating-chip{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:9px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(232,184,75,.06);color:var(--gold2);font-size:.86rem;font-weight:500}
@@ -426,7 +429,7 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 .stars svg{width:14px;height:14px;color:var(--gold)}
 .quote blockquote{font-size:1.02rem;line-height:1.7;color:var(--ink)}
 .quote-who{display:flex;align-items:center;gap:13px;margin-top:22px}
-.avatar{width:45px;height:45px;border-radius:50%;background:var(--grad-gold);color:#1A1206;display:grid;place-items:center;font-family:var(--font-d);font-weight:700;font-size:.92rem;flex-shrink:0}
+.avatar{width:45px;height:45px;border-radius:50%;background:var(--grad-gold);color:#1A1206;display:grid;place-items:center;font-family:var(--font-d);font-weight:700;font-size:.78rem;flex-shrink:0}
 .quote-who b{display:block;font-weight:600;font-size:.95rem}
 .quote-who small{color:var(--dim);font-size:.78rem}
 
@@ -475,7 +478,7 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 #formOk.show .ok-check circle{animation:drawIn 1s ease forwards}
 #formOk.show .ok-check path{animation:drawIn .6s ease .7s forwards}
 @keyframes drawIn{to{stroke-dashoffset:0}}
-#formOk h3{font-family:var(--font-d);font-size:1.6rem;color:var(--gold2);margin:12px 0 6px}
+#formOk h3{font-family:var(--font-d);font-weight:700;font-size:1.3rem;color:var(--gold2);margin:12px 0 6px}
 .ok-ref{display:inline-block;font-size:.84rem;letter-spacing:.1em;border:1px solid var(--line2);border-radius:999px;padding:7px 16px;color:var(--gold2);margin:10px 0 14px}
 #formOk p{color:var(--muted);max-width:44ch;margin-left:auto;margin-right:auto}
 .ok-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
@@ -483,7 +486,7 @@ section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;point
 /* ---------- Pie ---------- */
 footer{position:relative;z-index:2;border-top:1px solid var(--line);background:#070B16;padding:70px 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
-.foot-brand .script{font-family:var(--font-s);font-size:1.6rem;color:var(--gold2);margin:10px 0 12px}
+.foot-brand .script{font-family:var(--font-s);font-size:1.8rem;color:var(--gold2);margin:10px 0 12px}
 .foot-brand p{color:var(--dim);font-size:.9rem;max-width:32ch}
 .foot-certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 footer h4{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
@@ -514,7 +517,7 @@ footer h4{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:u
 .modal-scrim{position:absolute;top:0;left:0;right:0;bottom:0;background:var(--scrim);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .modal-card{position:relative;width:100%;max-width:640px;max-height:80vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--surface2);border:1px solid var(--line2);border-radius:18px;padding:36px;transform:translateY(16px);transition:transform .35s}
 #modal.open .modal-card{transform:none}
-.modal-card h3{font-family:var(--font-d);font-size:1.4rem;color:var(--gold2);margin-bottom:16px;padding-right:40px}
+.modal-card h3{font-family:var(--font-d);font-weight:700;font-size:1.15rem;color:var(--gold2);margin-bottom:16px;padding-right:40px}
 .modal-card p{color:var(--muted);font-size:.94rem;line-height:1.75;margin-bottom:12px}
 .modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;color:var(--gold2);transition:background .3s}
 .modal-close:hover{background:rgba(232,184,75,.1)}
@@ -559,19 +562,21 @@ footer h4{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:u
 }
 @media(max-height:600px){.cue{display:none}}
 
-/* ---------- Seguro 1: si el JS no llega a ejecutarse, el CSS revela todo ---------- */
+/* ---------- Seguro 1: sin JS, el CSS revela todo + fotos reales ---------- */
 html.pre #veil{animation:lvVeilOut .5s ease 9s forwards}
 html.pre #nav,html.pre [data-reveal],html.pre .step,html.pre .stat-label,html.pre .work-meta,html.pre [data-paint] .u,html.pre .fade-el{animation:lvIn .5s ease 9s forwards}
 html.pre .ed,html.pre #mPath,html.pre .icon-draw path,html.pre .icon-draw circle,html.pre .icon-draw rect{animation:lvDraw .5s ease 9s forwards}
 html.pre .bolt-fill{animation:lvFill .5s ease 9s forwards}
 html.pre .stat-line{animation:lvLine .5s ease 9s forwards}
+html.pre .work-frame{background-image:var(--photo);background-size:cover;background-position:center}
+html.pre .work-idle{display:none}
 @keyframes lvVeilOut{to{opacity:0;visibility:hidden}}
 @keyframes lvIn{to{opacity:1;transform:none}}
 @keyframes lvDraw{to{stroke-dashoffset:0}}
 @keyframes lvFill{to{fill-opacity:.92}}
 @keyframes lvLine{to{transform:scaleX(1)}}
 
-/* ---------- Seguro 2: modo de emergencia activado por el vigilante ---------- */
+/* ---------- Seguro 2: modo emergencia ---------- */
 html.lv-fallback #veil{display:none!important}
 html.lv-fallback #nav{opacity:1!important;transform:none!important}
 html.lv-fallback [data-paint] .u{opacity:1!important;transform:none!important;filter:none!important}
@@ -584,6 +589,8 @@ html.lv-fallback .stat-line{transform:scaleX(1)!important}
 html.lv-fallback .stat-label,html.lv-fallback .work-meta{opacity:1!important;transform:none!important}
 html.lv-fallback .step{opacity:1!important;transform:none!important}
 html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-fallback #glow{display:none!important}
+html.lv-fallback .work-frame{background-image:var(--photo);background-size:cover;background-position:center}
+html.lv-fallback .work-idle{display:none!important}
 
 /* ---------- Movimiento reducido ---------- */
 @media(prefers-reduced-motion:reduce){
@@ -598,8 +605,7 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
 </head>
 <body class="booting">
 <script>
-/* VIGILANTE DE ARRANQUE (independiente, ES5: funciona en cualquier dispositivo).
-   Si el script principal falla por cualquier motivo, muestra la web completa. */
+/* VIGILANTE DE ARRANQUE (independiente, ES5). Si algo falla, muestra la web completa. */
 (function(){
   var d=document.documentElement;
   d.className=d.className.replace(/\bpre\b/g,'').replace(/^\s+|\s+$/g,'');
@@ -626,33 +632,16 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
 </script>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<!-- Definiciones SVG compartidas -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#F6D98A"/><stop offset=".5" stop-color="#E8B84B"/><stop offset="1" stop-color="#C9973B"/>
-    </linearGradient>
-    <linearGradient id="gGoldV" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#F6D98A"/><stop offset="1" stop-color="#C9973B"/>
-    </linearGradient>
-    <linearGradient id="gVolt" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4FD9FF"/><stop offset="1" stop-color="#8F7BFF"/>
-    </linearGradient>
-    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFD9A8"/><stop offset="1" stop-color="#FF9E3D"/>
-    </linearGradient>
-    <linearGradient id="gViolet" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#CFC5FF"/><stop offset="1" stop-color="#8F7BFF"/>
-    </linearGradient>
-    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFC7E3"/><stop offset="1" stop-color="#FF7AB8"/>
-    </linearGradient>
-    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#B8F5DC"/><stop offset="1" stop-color="#3ED598"/>
-    </linearGradient>
-    <radialGradient id="gCore">
-      <stop offset="0" stop-color="#F6D98A" stop-opacity=".55"/><stop offset="1" stop-color="#F6D98A" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D98A"/><stop offset=".5" stop-color="#E8B84B"/><stop offset="1" stop-color="#C9973B"/></linearGradient>
+    <linearGradient id="gGoldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D98A"/><stop offset="1" stop-color="#C9973B"/></linearGradient>
+    <linearGradient id="gVolt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FD9FF"/><stop offset="1" stop-color="#8F7BFF"/></linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD9A8"/><stop offset="1" stop-color="#FF9E3D"/></linearGradient>
+    <linearGradient id="gViolet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#CFC5FF"/><stop offset="1" stop-color="#8F7BFF"/></linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC7E3"/><stop offset="1" stop-color="#FF7AB8"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B8F5DC"/><stop offset="1" stop-color="#3ED598"/></linearGradient>
+    <radialGradient id="gCore"><stop offset="0" stop-color="#F6D98A" stop-opacity=".55"/><stop offset="1" stop-color="#F6D98A" stop-opacity="0"/></radialGradient>
     <symbol id="s-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-2 8L18 9h-6l1-7z" fill="currentColor"/></symbol>
     <symbol id="s-star" viewBox="0 0 14 14"><path d="M7 1l1.8 4 4.2.4-3.2 2.8 1 4.3L7 10.2 3.2 12.5l1-4.3L1 5.4 5.2 5z" fill="currentColor"/></symbol>
     <symbol id="s-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-7 7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -666,7 +655,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   </defs>
 </svg>
 
-<!-- Velo de carga -->
 <div id="veil" aria-hidden="true">
   <div class="veil-inner">
     <svg class="veil-bolt" viewBox="0 0 24 24"><use href="#s-bolt" fill="#E8B84B"/></svg>
@@ -676,7 +664,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   </div>
 </div>
 
-<!-- Fondo -->
 <div id="bg" aria-hidden="true">
   <div class="bg-mesh"></div>
   <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="aurora a4"></div>
@@ -686,7 +673,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
 <canvas id="fx" aria-hidden="true"></canvas>
 <div id="brushes" aria-hidden="true"></div>
 
-<!-- Navegación -->
 <header id="nav">
   <a class="brand" href="#inicio" aria-label="LUXVOLT — inicio">
     <svg viewBox="0 0 24 24" style="color:var(--gold)"><use href="#s-bolt"/></svg>
@@ -709,14 +695,11 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       </svg>
     </button>
     <a class="btn btn-gold btn-sm" href="#contacto"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Presupuesto</a>
-    <button id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
   <div id="progress" aria-hidden="true"></div>
 </header>
 
-<!-- Menú móvil -->
 <div id="menu" aria-hidden="true">
   <a class="mlink" href="#inicio"><i>01</i>Inicio</a>
   <a class="mlink" href="#servicios"><i>02</i>Servicios</a>
@@ -734,7 +717,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
 
 <main id="contenido">
 
-  <!-- ═══════════ HÉROE ═══════════ -->
   <section class="hero container" id="inicio" data-nav>
     <svg class="hero-circuits" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <path d="M-20 180 H320 L380 240 H620"/>
@@ -782,28 +764,18 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
           </g>
           <path class="ed e5" pathLength="1" d="M96 130 A84 84 0 0 1 150 88" fill="none" stroke="#4FD9FF" stroke-width="1" opacity=".55"/>
           <path class="ed e5" pathLength="1" d="M244 210 A84 84 0 0 1 190 252" fill="none" stroke="#8F7BFF" stroke-width="1" opacity=".55"/>
-          <path class="ed e6 bolt-fill" pathLength="1" d="M186 62 L116 190 H158 L146 278 L226 142 H182 L206 62 Z"
-                fill="url(#gGoldV)" stroke="url(#gGold)" stroke-width="2" stroke-linejoin="round"/>
-          <g class="orbit fade-el">
-            <circle cx="170" cy="36" r="9" fill="#F6D98A" opacity=".22"/>
-            <circle cx="170" cy="36" r="3.4" fill="#F6D98A"/>
-          </g>
-          <g class="orbit2 fade-el">
-            <circle cx="170" cy="58" r="6" fill="#4FD9FF" opacity=".2"/>
-            <circle cx="170" cy="58" r="2.6" fill="#4FD9FF"/>
-          </g>
+          <path class="ed e6 bolt-fill" pathLength="1" d="M186 62 L116 190 H158 L146 278 L226 142 H182 L206 62 Z" fill="url(#gGoldV)" stroke="url(#gGold)" stroke-width="2" stroke-linejoin="round"/>
+          <g class="orbit fade-el"><circle cx="170" cy="36" r="9" fill="#F6D98A" opacity=".22"/><circle cx="170" cy="36" r="3.4" fill="#F6D98A"/></g>
+          <g class="orbit2 fade-el"><circle cx="170" cy="58" r="6" fill="#4FD9FF" opacity=".2"/><circle cx="170" cy="58" r="2.6" fill="#4FD9FF"/></g>
         </svg>
       </div>
       <span class="em-badge eb1" data-reveal="manual"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>24/7 activos</span>
       <span class="em-badge eb2" data-reveal="manual"><svg viewBox="0 0 24 24"><use href="#s-shield"/></svg>10 años de garantía</span>
       <span class="em-badge eb3" data-reveal="manual"><svg viewBox="0 0 14 14"><use href="#s-star"/></svg>4,9 ★</span>
     </div>
-    <a class="cue" id="cue" href="#logros" data-reveal="manual" aria-label="Desliza para descubrir">
-      <span class="cue-mouse"></span><span>Desliza para descubrir</span>
-    </a>
+    <a class="cue" id="cue" href="#logros" data-reveal="manual" aria-label="Desliza para descubrir"><span class="cue-mouse"></span><span>Desliza para descubrir</span></a>
   </section>
 
-  <!-- Marquesina de confianza -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track" id="marqueeTrack">
       <span>ISO 9001 · Calidad</span><span>ISO 45001 · Seguridad</span><span>Instaladores autorizados</span>
@@ -812,7 +784,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
   </div>
 
-  <!-- ═══════════ CIFRAS ═══════════ -->
   <section id="logros" class="container">
     <div class="sec-head">
       <div class="kicker" data-reveal>01 · La maison en cifras</div>
@@ -820,27 +791,14 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
       <p class="sec-intro" data-reveal style="--d:.15s">Casi tres décadas iluminando lo extraordinario, con métricas auditadas y una obsesión sana por el detalle.</p>
     </div>
     <div class="stats-grid">
-      <div class="stat" data-reveal="fade">
-        <div class="stat-top"><span class="stat-val" data-target="27">27</span></div>
-        <div class="stat-line"></div><div class="stat-label">Años de maestría</div>
-      </div>
-      <div class="stat" data-reveal="fade" style="--d:.1s">
-        <div class="stat-top"><span class="stat-val" data-target="1480">1.480</span></div>
-        <div class="stat-line"></div><div class="stat-label">Proyectos entregados</div>
-      </div>
-      <div class="stat" data-reveal="fade" style="--d:.2s">
-        <div class="stat-top"><span class="stat-val" data-target="99.98" data-decimals="2">99,98</span><span class="stat-suffix">%</span></div>
-        <div class="stat-line"></div><div class="stat-label">Continuidad eléctrica</div>
-      </div>
-      <div class="stat" data-reveal="fade" style="--d:.3s">
-        <div class="stat-top"><span class="stat-val gilded" data-static="24/7" data-paint="chars">24/7</span></div>
-        <div class="stat-line"></div><div class="stat-label">Atención de emergencia</div>
-      </div>
+      <div class="stat" data-reveal="fade"><div class="stat-top"><span class="stat-val" data-target="27">27</span></div><div class="stat-line"></div><div class="stat-label">Años de maestría</div></div>
+      <div class="stat" data-reveal="fade" style="--d:.1s"><div class="stat-top"><span class="stat-val" data-target="1480">1.480</span></div><div class="stat-line"></div><div class="stat-label">Proyectos entregados</div></div>
+      <div class="stat" data-reveal="fade" style="--d:.2s"><div class="stat-top"><span class="stat-val" data-target="99.98" data-decimals="2">99,98</span><span class="stat-suffix">%</span></div><div class="stat-line"></div><div class="stat-label">Continuidad eléctrica</div></div>
+      <div class="stat" data-reveal="fade" style="--d:.3s"><div class="stat-top"><span class="stat-val gilded" data-static="24/7" data-paint="chars">24/7</span></div><div class="stat-line"></div><div class="stat-label">Atención de emergencia</div></div>
     </div>
     <p class="stats-note" data-reveal><svg viewBox="0 0 24 24"><use href="#s-shield"/></svg>Cifras auditadas anualmente por entidades independientes.</p>
   </section>
 
-  <!-- ═══════════ SERVICIOS ═══════════ -->
   <section id="servicios" class="container" data-nav>
     <div class="sec-head">
       <div class="kicker" data-reveal>02 · Nuestros oficios</div>
@@ -849,64 +807,42 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
     <div class="svc-grid">
       <article class="svc" data-reveal style="--acc:#E8B84B;--acc-soft:rgba(232,184,75,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path pathLength="1" d="M8 22 24 8l16 14"/><path pathLength="1" d="M12 20v20h24V20"/>
-          <path pathLength="1" d="M26 22l-6 9h4l-2 7 8-10h-4l2-6z"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M8 22 24 8l16 14"/><path pathLength="1" d="M12 20v20h24V20"/><path pathLength="1" d="M26 22l-6 9h4l-2 7 8-10h-4l2-6z"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Residencial Premium</h3>
         <p>Instalaciones silenciosas, seguras y bellas: de villas a penthouses, cada circuito se ejecuta como alta costura.</p>
         <div class="svc-chips"><span class="chip">Cuadros a medida</span><span class="chip">Iluminación escénica</span><span class="chip">Certificado oficial</span></div>
         <button class="svc-cta" type="button" data-service="Residencial Premium">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
       <article class="svc" data-reveal style="--d:.1s;--acc:#4FD9FF;--acc-soft:rgba(79,217,255,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gVolt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path pathLength="1" d="M6 40h36"/><path pathLength="1" d="M10 40V22l10 6v-6l10 6V14h10v26"/>
-          <path pathLength="1" d="M33 14V8h4v6"/><path pathLength="1" d="M14 34h4m6 0h4m6 0h4"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gVolt)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M6 40h36"/><path pathLength="1" d="M10 40V22l10 6v-6l10 6V14h10v26"/><path pathLength="1" d="M33 14V8h4v6"/><path pathLength="1" d="M14 34h4m6 0h4m6 0h4"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Comercial &amp; Industrial</h3>
         <p>Ingeniería de potencia para espacios que no pueden detenerse: media tensión, tableros inteligentes y eficiencia.</p>
         <div class="svc-chips"><span class="chip">Media tensión</span><span class="chip">Tableros inteligentes</span><span class="chip">Eficiencia energética</span></div>
         <button class="svc-cta" type="button" data-service="Comercial & Industrial">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
       <article class="svc" data-reveal style="--d:.2s;--acc:#FF9E3D;--acc-soft:rgba(255,158,61,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gAmber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle pathLength="1" cx="36" cy="12" r="5"/>
-          <path pathLength="1" d="M36 3v2m0 14v2M27 12h2m14 0h2M29.5 5.5 31 7m10 10 1.5 1.5m0-13L41 7M31 17l-1.5 1.5"/>
-          <path pathLength="1" d="M6 26h28l4 14H10z"/><path pathLength="1" d="M13 26l4 14m3-14 4 14m3-14 4 14M8.5 33H36"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gAmber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="1" cx="36" cy="12" r="5"/><path pathLength="1" d="M36 3v2m0 14v2M27 12h2m14 0h2M29.5 5.5 31 7m10 10 1.5 1.5m0-13L41 7M31 17l-1.5 1.5"/><path pathLength="1" d="M6 26h28l4 14H10z"/><path pathLength="1" d="M13 26l4 14m3-14 4 14m3-14 4 14M8.5 33H36"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Solar &amp; Respaldo</h3>
         <p>Independencia energética con estética: fotovoltaica integrada, baterías y conmutación invisible en milisegundos.</p>
         <div class="svc-chips"><span class="chip">Fotovoltaica</span><span class="chip">Baterías LFP</span><span class="chip">Conmutación instantánea</span></div>
         <button class="svc-cta" type="button" data-service="Solar & Respaldo">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
       <article class="svc" data-reveal style="--d:.1s;--acc:#8F7BFF;--acc-soft:rgba(143,123,255,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gViolet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path pathLength="1" d="M10 20 24 9l14 11v20H10z"/><rect pathLength="1" x="18" y="22" width="12" height="12" rx="2"/>
-          <path pathLength="1" d="M21 22v-4m6 4v-4m-6 20v-4m6 4v-4m-12-9h-4m4 6h-4m16-6h4m-4 6h4"/>
-          <circle pathLength="1" cx="24" cy="28" r="2"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gViolet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M10 20 24 9l14 11v20H10z"/><rect pathLength="1" x="18" y="22" width="12" height="12" rx="2"/><path pathLength="1" d="M21 22v-4m6 4v-4m-6 20v-4m6 4v-4m-12-9h-4m4 6h-4m16-6h4m-4 6h4"/><circle pathLength="1" cx="24" cy="28" r="2"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Domótica &amp; KNX</h3>
         <p>La casa que responde: escenas de luz, clima y seguridad orquestadas con precisión suiza y control por voz.</p>
         <div class="svc-chips"><span class="chip">KNX · DALI</span><span class="chip">Control por voz</span><span class="chip">Escenas de autor</span></div>
         <button class="svc-cta" type="button" data-service="Domótica & KNX">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
       <article class="svc" data-reveal style="--d:.2s;--acc:#FF7AB8;--acc-soft:rgba(255,122,184,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gRose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path pathLength="1" d="M24 4v8"/><path pathLength="1" d="M10 18q0 8 14 8t14-8"/><path pathLength="1" d="M24 12v14"/>
-          <path pathLength="1" d="M10 18v-5m28 5v-5m-14 13v-5"/>
-          <circle pathLength="1" cx="10" cy="11" r="1.8"/><circle pathLength="1" cx="38" cy="11" r="1.8"/><circle pathLength="1" cx="24" cy="19" r="1.8"/>
-          <path pathLength="1" d="M18 27v5m12-5v5m-6-6v10m0 0 2 3-2 3-2-3z"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gRose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M24 4v8"/><path pathLength="1" d="M10 18q0 8 14 8t14-8"/><path pathLength="1" d="M24 12v14"/><path pathLength="1" d="M10 18v-5m28 5v-5m-14 13v-5"/><circle pathLength="1" cx="10" cy="11" r="1.8"/><circle pathLength="1" cx="38" cy="11" r="1.8"/><circle pathLength="1" cx="24" cy="19" r="1.8"/><path pathLength="1" d="M18 27v5m12-5v5m-6-6v10m0 0 2 3-2 3-2-3z"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Iluminación Arquitectónica</h3>
         <p>Luz que esculpe arquitectura: estudios lumínicos, temperatura perfecta y detalle museográfico en cada plano.</p>
         <div class="svc-chips"><span class="chip">Estudio lumínico</span><span class="chip">Regulación DALI</span><span class="chip">Fachadas &amp; jardines</span></div>
         <button class="svc-cta" type="button" data-service="Iluminación Arquitectónica">Solicitar este servicio<svg viewBox="0 0 24 24"><use href="#s-arrow"/></svg></button>
       </article>
       <article class="svc" data-reveal style="--d:.3s;--acc:#3ED598;--acc-soft:rgba(62,213,152,.4)">
-        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGreen)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path pathLength="1" d="M24 5l15 6v13c0 10-7 16-15 19-8-3-15-9-15-19V11z"/>
-          <path pathLength="1" d="M14 26h6l3-6 4 12 3-6h4"/>
-        </svg>
+        <svg class="svc-icon icon-draw" viewBox="0 0 48 48" fill="none" stroke="url(#gGreen)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M24 5l15 6v13c0 10-7 16-15 19-8-3-15-9-15-19V11z"/><path pathLength="1" d="M14 26h6l3-6 4 12 3-6h4"/></svg>
         <h3 data-paint="words" data-auto data-brush="cyan" data-speed="900">Auditoría &amp; Mantenimiento</h3>
         <p>Termografía, analítica de redes y planes vivos de mantenimiento predictivo para dormir en absoluta calma.</p>
         <div class="svc-chips"><span class="chip">Termografía IR</span><span class="chip">Informe 360°</span><span class="chip">Plan 24/7</span></div>
@@ -915,71 +851,69 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
   </section>
 
-  <!-- ═══════════ GALERÍA DE OBRAS ═══════════ -->
   <section id="proyectos" class="container" data-nav>
     <div class="sec-head">
       <div class="kicker" data-reveal>03 · Galería de obras</div>
       <h2 class="gilded" data-paint="chars" data-auto data-brush="gold" data-speed="760">Obras que iluminan</h2>
-      <p class="sec-intro" data-reveal style="--d:.15s">Cada proyecto se pinta ante tus ojos, igual que lo construimos: trazo a trazo, sin prisa y sin concesiones.</p>
+      <p class="sec-intro" data-reveal style="--d:.15s">Fotografía real de cada obra. Nuestros pinceles de luz la revelan ante tus ojos, trazo a trazo, sin prisa y sin concesiones. 📷</p>
     </div>
     <div class="works-grid">
-      <figure class="work" data-scene="skyline" data-reveal="fade">
+      <figure class="work" data-scene="skyline" data-reveal="fade" data-photo="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=70" style="--photo:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=70')">
         <div class="work-frame">
-          <canvas role="img" aria-label="Pintura digital: skyline nocturno de Madrid con auroras, ventanas iluminadas y tendido eléctrico"></canvas>
+          <canvas role="img" aria-label="Fotografía real: interior de un penthouse de lujo con iluminación cálida"></canvas>
           <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
-          <span class="work-badge">Domótica integral</span>
+          <span class="work-badge">Domótica integral</span><span class="work-real">📷 Real</span>
         </div>
         <figcaption class="plaque">
           <div><h3 class="work-title" data-paint="words">Penthouse Mirador</h3>
-          <p class="work-meta">Madrid · 2026 · Domótica, iluminación escénica y respaldo total</p></div>
+          <p class="work-meta">Madrid · 2026 · Domótica, iluminación escénica y respaldo total · Fotografía real</p></div>
           <span class="work-num">N.º 01</span>
         </figcaption>
       </figure>
-      <figure class="work" data-scene="solar" data-reveal="fade" style="--d:.12s">
+      <figure class="work" data-scene="solar" data-reveal="fade" style="--d:.12s;--photo:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=70')" data-photo="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=70">
         <div class="work-frame">
-          <canvas role="img" aria-label="Pintura digital: campo de paneles solares al atardecer entre viñedos"></canvas>
+          <canvas role="img" aria-label="Fotografía real: campo de paneles solares fotovoltaicos"></canvas>
           <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
-          <span class="work-badge">Planta FV · 2,4 MW</span>
+          <span class="work-badge">Planta FV · 2,4 MW</span><span class="work-real">📷 Real</span>
         </div>
         <figcaption class="plaque">
           <div><h3 class="work-title" data-paint="words">Viña Solar del Valle</h3>
-          <p class="work-meta">La Rioja · 2025 · Fotovoltaica integrada y monitorización 24/7</p></div>
+          <p class="work-meta">La Rioja · 2025 · Fotovoltaica integrada y monitorización 24/7 · Fotografía real</p></div>
           <span class="work-num">N.º 02</span>
         </figcaption>
       </figure>
-      <figure class="work" data-scene="hotel" data-reveal="fade">
+      <figure class="work" data-scene="hotel" data-reveal="fade" data-photo="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=70" style="--photo:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=70')">
         <div class="work-frame">
-          <canvas role="img" aria-label="Pintura digital: gran lámpara de araña dorada en el lobby de un hotel de lujo"></canvas>
+          <canvas role="img" aria-label="Fotografía real: hotel de lujo con iluminación ambiental"></canvas>
           <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
-          <span class="work-badge">Iluminación &amp; respaldo</span>
+          <span class="work-badge">Iluminación &amp; respaldo</span><span class="work-real">📷 Real</span>
         </div>
         <figcaption class="plaque">
           <div><h3 class="work-title" data-paint="words">Hotel Aurum</h3>
-          <p class="work-meta">Marbella · 2025 · Iluminación arquitectónica y energía ininterrumpida</p></div>
+          <p class="work-meta">Marbella · 2025 · Iluminación arquitectónica y energía ininterrumpida · Fotografía real</p></div>
           <span class="work-num">N.º 03</span>
         </figcaption>
       </figure>
-      <figure class="work" data-scene="substation" data-reveal="fade" style="--d:.12s">
+      <figure class="work" data-scene="substation" data-reveal="fade" style="--d:.12s;--photo:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70')" data-photo="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70">
         <div class="work-frame">
-          <canvas role="img" aria-label="Pintura digital: subestación eléctrica nocturna con torres y destellos de corona"></canvas>
+          <canvas role="img" aria-label="Fotografía real: torres de transmisión eléctrica de media tensión al atardecer"></canvas>
           <div class="twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
           <div class="work-idle"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg><span>Lienzo en preparación</span></div>
-          <span class="work-badge">Media tensión · 34,5 kV</span>
+          <span class="work-badge">Media tensión · 34,5 kV</span><span class="work-real">📷 Real</span>
         </div>
         <figcaption class="plaque">
           <div><h3 class="work-title" data-paint="words">Subestación Norte</h3>
-          <p class="work-meta">Bilbao · 2024 · Ingeniería de media tensión y telecontrol</p></div>
+          <p class="work-meta">Bilbao · 2024 · Ingeniería de media tensión y telecontrol · Fotografía real</p></div>
           <span class="work-num">N.º 04</span>
         </figcaption>
       </figure>
     </div>
-    <p class="collection-note" data-reveal>— colección permanente · técnica: energía sobre lienzo —</p>
+    <p class="collection-note" data-reveal>— colección permanente · fotografía real, luz de atelier —</p>
   </section>
 
-  <!-- ═══════════ LABORATORIO DE LUZ (DEMO) ═══════════ -->
   <section id="demo" class="container" data-nav>
     <div class="sec-head">
       <div class="kicker" data-reveal>04 · Laboratorio de luz</div>
@@ -992,13 +926,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
           <div class="room-amb" id="ambA"></div>
           <div class="room-amb" id="ambB"></div>
           <div class="room-window"><i></i><i></i><i></i><i></i></div>
-          <span class="lamp-cord"></span>
-          <span class="lamp-glow"></span>
-          <span class="lamp-shade"></span>
-          <div class="room-sofa"></div>
-          <div class="room-plant"></div>
-          <div class="room-floor"></div>
-          <div class="room-strip"></div>
+          <span class="lamp-cord"></span><span class="lamp-glow"></span><span class="lamp-shade"></span>
+          <div class="room-sofa"></div><div class="room-plant"></div><div class="room-floor"></div><div class="room-strip"></div>
           <i class="room-spark rs1"></i><i class="room-spark rs2"></i><i class="room-spark rs3"></i><i class="room-spark rs4"></i><i class="room-spark rs5"></i>
           <span class="room-tag" id="roomTag">Escena · Cena</span>
         </div>
@@ -1019,7 +948,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
   </section>
 
-  <!-- ═══════════ MÉTODO ═══════════ -->
   <section id="metodo" class="container" data-nav>
     <div class="sec-head">
       <div class="kicker" data-reveal>05 · El método</div>
@@ -1029,10 +957,8 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     <div class="method">
       <div class="m-rail" id="mRail" aria-hidden="true">
         <svg viewBox="0 0 56 1000" preserveAspectRatio="none">
-          <path d="M28 0 C40 100 16 200 28 300 C40 400 16 500 28 600 C40 700 16 800 28 900 C34 950 24 975 28 1000"
-                fill="none" stroke="url(#gGoldV)" stroke-width="2" opacity=".14"/>
-          <path id="mPath" pathLength="1" d="M28 0 C40 100 16 200 28 300 C40 400 16 500 28 600 C40 700 16 800 28 900 C34 950 24 975 28 1000"
-                fill="none" stroke="url(#gGoldV)" stroke-width="2" style="filter:drop-shadow(0 0 6px rgba(232,184,75,.6))"/>
+          <path d="M28 0 C40 100 16 200 28 300 C40 400 16 500 28 600 C40 700 16 800 28 900 C34 950 24 975 28 1000" fill="none" stroke="url(#gGoldV)" stroke-width="2" opacity=".14"/>
+          <path id="mPath" pathLength="1" d="M28 0 C40 100 16 200 28 300 C40 400 16 500 28 600 C40 700 16 800 28 900 C34 950 24 975 28 1000" fill="none" stroke="url(#gGoldV)" stroke-width="2" style="filter:drop-shadow(0 0 6px rgba(232,184,75,.6))"/>
         </svg>
         <div class="m-dot" id="mDot"></div>
       </div>
@@ -1044,7 +970,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
   </section>
 
-  <!-- ═══════════ VOCES ═══════════ -->
   <section id="voces" class="container">
     <div class="sec-head">
       <div class="kicker" data-reveal>06 · Voces</div>
@@ -1070,7 +995,6 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
   </section>
 
-  <!-- ═══════════ CONTACTO ═══════════ -->
   <section id="contacto" class="container" data-nav>
     <div class="sec-head">
       <div class="kicker" data-reveal>07 · Hablemos</div>
@@ -1079,96 +1003,37 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
     </div>
     <div class="contact-grid">
       <div data-reveal="left">
-        <div class="c-item">
-          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-          <div><small>Atelier</small><span class="c-val">Paseo de la Luz 48, 28014 Madrid</span></div>
-        </div>
-        <div class="c-item">
-          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
-          <div><small>Teléfono</small><a href="tel:+34915000480">+34 915 000 480</a></div>
-          <button class="copy-btn" type="button" data-copy="+34 915 000 480" data-copy-label="Teléfono" aria-label="Copiar teléfono"><svg viewBox="0 0 24 24"><use href="#s-copy"/></svg></button>
-        </div>
-        <div class="c-item">
-          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span>
-          <div><small>Email</small><a href="mailto:atelier@luxvolt.es">atelier@luxvolt.es</a></div>
-          <button class="copy-btn" type="button" data-copy="atelier@luxvolt.es" data-copy-label="Email" aria-label="Copiar email"><svg viewBox="0 0 24 24"><use href="#s-copy"/></svg></button>
-        </div>
-        <div class="c-item">
-          <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-          <div><small>Horario</small><span class="c-val">Lunes a Viernes · 9:00 – 19:00</span></div>
-        </div>
+        <div class="c-item"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span><div><small>Atelier</small><span class="c-val">Paseo de la Luz 48, 28014 Madrid</span></div></div>
+        <div class="c-item"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><small>Teléfono</small><a href="tel:+34915000480">+34 915 000 480</a></div><button class="copy-btn" type="button" data-copy="+34 915 000 480" data-copy-label="Teléfono" aria-label="Copiar teléfono"><svg viewBox="0 0 24 24"><use href="#s-copy"/></svg></button></div>
+        <div class="c-item"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span><div><small>Email</small><a href="mailto:atelier@luxvolt.es">atelier@luxvolt.es</a></div><button class="copy-btn" type="button" data-copy="atelier@luxvolt.es" data-copy-label="Email" aria-label="Copiar email"><svg viewBox="0 0 24 24"><use href="#s-copy"/></svg></button></div>
+        <div class="c-item"><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><small>Horario</small><span class="c-val">Lunes a Viernes · 9:00 – 19:00</span></div></div>
         <span class="emergency"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Emergencias 24/7 · línea prioritaria</span>
       </div>
       <div class="form-card" data-reveal="right" style="--d:.1s">
         <form id="contactForm" novalidate>
           <div class="f-grid">
-            <div class="f-field">
-              <label for="f-name">Nombre *</label>
-              <input id="f-name" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo">
-              <span class="err" id="e-name" aria-live="polite"></span>
-            </div>
-            <div class="f-field">
-              <label for="f-email">Email *</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com">
-              <span class="err" id="e-email" aria-live="polite"></span>
-            </div>
-            <div class="f-field">
-              <label for="f-phone">Teléfono</label>
-              <input id="f-phone" name="telefono" type="tel" autocomplete="tel" placeholder="+34 600 000 000">
-              <span class="err"></span>
-            </div>
-            <div class="f-field">
-              <label for="f-service">Servicio</label>
-              <select id="f-service" name="servicio">
-                <option>Consulta general</option>
-                <option>Residencial Premium</option>
-                <option>Comercial &amp; Industrial</option>
-                <option>Solar &amp; Respaldo</option>
-                <option>Domótica &amp; KNX</option>
-                <option>Iluminación Arquitectónica</option>
-                <option>Auditoría &amp; Mantenimiento</option>
-              </select>
-              <span class="err"></span>
-            </div>
-            <div class="f-field full">
-              <label for="f-msg">Tu proyecto *</label>
-              <textarea id="f-msg" name="mensaje" placeholder="Cuéntanos qué espacio quieres iluminar, plazos, metros cuadrados, ideas…"></textarea>
-              <span class="err" id="e-msg" aria-live="polite"></span>
-            </div>
-            <div class="f-field full">
-              <label class="consent" for="f-consent" style="text-transform:none;letter-spacing:0;font-size:.86rem;font-weight:300">
-                <input id="f-consent" type="checkbox">
-                <span>Acepto la <button class="linklike" type="button" data-legal="privacidad">política de privacidad</button> y el tratamiento de mis datos para responder a esta solicitud. *</span>
-              </label>
-              <span class="err" id="e-consent" aria-live="polite"></span>
-            </div>
-            <div class="f-field full">
-              <button class="btn btn-gold submit-btn" id="submitBtn" type="submit">
-                <span class="btn-label" style="display:inline-flex;align-items:center;gap:10px"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><use href="#s-bolt"/></svg>Enviar solicitud</span>
-              </button>
-            </div>
+            <div class="f-field"><label for="f-name">Nombre *</label><input id="f-name" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo"><span class="err" id="e-name" aria-live="polite"></span></div>
+            <div class="f-field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com"><span class="err" id="e-email" aria-live="polite"></span></div>
+            <div class="f-field"><label for="f-phone">Teléfono</label><input id="f-phone" name="telefono" type="tel" autocomplete="tel" placeholder="+34 600 000 000"><span class="err"></span></div>
+            <div class="f-field"><label for="f-service">Servicio</label>
+              <select id="f-service" name="servicio"><option>Consulta general</option><option>Residencial Premium</option><option>Comercial &amp; Industrial</option><option>Solar &amp; Respaldo</option><option>Domótica &amp; KNX</option><option>Iluminación Arquitectónica</option><option>Auditoría &amp; Mantenimiento</option></select><span class="err"></span></div>
+            <div class="f-field full"><label for="f-msg">Tu proyecto *</label><textarea id="f-msg" name="mensaje" placeholder="Cuéntanos qué espacio quieres iluminar, plazos, metros cuadrados, ideas…"></textarea><span class="err" id="e-msg" aria-live="polite"></span></div>
+            <div class="f-field full"><label class="consent" for="f-consent" style="text-transform:none;letter-spacing:0;font-size:.86rem;font-weight:300"><input id="f-consent" type="checkbox"><span>Acepto la <button class="linklike" type="button" data-legal="privacidad">política de privacidad</button> y el tratamiento de mis datos para responder a esta solicitud. *</span></label><span class="err" id="e-consent" aria-live="polite"></span></div>
+            <div class="f-field full"><button class="btn btn-gold submit-btn" id="submitBtn" type="submit"><span class="btn-label" style="display:inline-flex;align-items:center;gap:10px"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><use href="#s-bolt"/></svg>Enviar solicitud</span></button></div>
           </div>
           <p class="form-note"><svg viewBox="0 0 24 24"><use href="#s-lock"/></svg>Respuesta &lt; 24 h laborables · Sin compromiso · Datos cifrados</p>
         </form>
         <div id="formOk" role="status">
-          <svg class="ok-check" viewBox="0 0 74 74" fill="none">
-            <circle pathLength="1" cx="37" cy="37" r="33" stroke="url(#gGold)" stroke-width="2"/>
-            <path pathLength="1" d="m23 38 10 10 19-21" stroke="#3ED598" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <h3>Solicitud recibida</h3>
-          <span class="ok-ref" id="okRef">LV-2026-0000</span>
+          <svg class="ok-check" viewBox="0 0 74 74" fill="none"><circle pathLength="1" cx="37" cy="37" r="33" stroke="url(#gGold)" stroke-width="2"/><path pathLength="1" d="m23 38 10 10 19-21" stroke="#3ED598" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Solicitud recibida</h3><span class="ok-ref" id="okRef">LV-2026-0000</span>
           <p>Un ingeniero de atelier revisará tu proyecto y te contactará muy pronto. Gracias por confiar en LUXVOLT.</p>
-          <div class="ok-actions">
-            <button class="btn btn-ghost btn-sm" id="newReq" type="button">Nueva solicitud</button>
-            <a class="btn btn-gold btn-sm" href="mailto:atelier@luxvolt.es"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Escríbenos por email</a>
-          </div>
+          <div class="ok-actions"><button class="btn btn-ghost btn-sm" id="newReq" type="button">Nueva solicitud</button><a class="btn btn-gold btn-sm" href="mailto:atelier@luxvolt.es"><svg viewBox="0 0 24 24"><use href="#s-bolt"/></svg>Escríbenos por email</a></div>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- ═══════════ PIE ═══════════ -->
 <footer>
   <div class="container">
     <div class="foot-grid">
@@ -1178,32 +1043,13 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
         <p>Ingeniería eléctrica de autor desde 1999. Madrid · Marbella · Bilbao.</p>
         <div class="foot-certs"><span class="chip">ISO 9001</span><span class="chip">ISO 45001</span><span class="chip">Instalador autorizado</span></div>
       </div>
-      <div data-reveal="fade" style="--d:.1s">
-        <h4>Explorar</h4>
-        <div class="foot-links">
-          <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#demo">Demo de luz</a><a href="#contacto">Contacto</a>
-        </div>
-      </div>
-      <div data-reveal="fade" style="--d:.2s">
-        <h4>Servicios</h4>
-        <div class="foot-links">
-          <a href="#servicios">Residencial Premium</a><a href="#servicios">Solar &amp; Respaldo</a><a href="#servicios">Domótica &amp; KNX</a><a href="#servicios">Iluminación</a>
-        </div>
-      </div>
-      <div class="foot-contact" data-reveal="fade" style="--d:.3s">
-        <h4>Atelier</h4>
-        <p>Paseo de la Luz 48<br>28014 Madrid, España</p>
-        <p><a href="tel:+34915000480" style="color:var(--gold2)">+34 915 000 480</a></p>
-        <p><a href="mailto:atelier@luxvolt.es" style="color:var(--gold2)">atelier@luxvolt.es</a></p>
-        <p style="color:var(--dim)">L–V · 9:00–19:00 · Emergencias 24/7</p>
-      </div>
+      <div data-reveal="fade" style="--d:.1s"><h4>Explorar</h4><div class="foot-links"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#demo">Demo de luz</a><a href="#contacto">Contacto</a></div></div>
+      <div data-reveal="fade" style="--d:.2s"><h4>Servicios</h4><div class="foot-links"><a href="#servicios">Residencial Premium</a><a href="#servicios">Solar &amp; Respaldo</a><a href="#servicios">Domótica &amp; KNX</a><a href="#servicios">Iluminación</a></div></div>
+      <div class="foot-contact" data-reveal="fade" style="--d:.3s"><h4>Atelier</h4><p>Paseo de la Luz 48<br>28014 Madrid, España</p><p><a href="tel:+34915000480" style="color:var(--gold2)">+34 915 000 480</a></p><p><a href="mailto:atelier@luxvolt.es" style="color:var(--gold2)">atelier@luxvolt.es</a></p><p style="color:var(--dim)">L–V · 9:00–19:00 · Emergencias 24/7</p></div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year">2026</span> LUXVOLT Ingeniería Eléctrica S.L. · Hecho a mano con ⚡ en Madrid</span>
-      <div class="foot-legal">
-        <button type="button" data-legal="aviso">Aviso legal</button>
-        <button type="button" data-legal="privacidad">Privacidad</button>
-      </div>
+      <div class="foot-legal"><button type="button" data-legal="aviso">Aviso legal</button><button type="button" data-legal="privacidad">Privacidad</button></div>
     </div>
   </div>
 </footer>
@@ -1217,15 +1063,13 @@ html.lv-fallback .m-dot,html.lv-fallback #brushes,html.lv-fallback #fx,html.lv-f
   <div class="modal-scrim" data-close-modal></div>
   <div class="modal-card">
     <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24"><use href="#s-x"/></svg></button>
-    <h3 id="modalTitle"></h3>
-    <div id="modalBody"></div>
+    <h3 id="modalTitle"></h3><div id="modalBody"></div>
   </div>
 </div>
 
 <script>
 (function(){
 'use strict';
-/* ═════════════════ Utilidades ═════════════════ */
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE=matchMedia('(pointer: fine)').matches;
@@ -1246,7 +1090,6 @@ function pageRect(el){const r=el.getBoundingClientRect();return{l:r.left+scrollX
 function vpos(px,py){return{x:px-scrollX,y:py-scrollY}}
 function mulberry(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
-/* ═════════════════ Sonido (sintetizado, sin archivos) ═════════════════ */
 const Sound={
   enabled:(lsGet('lv-sound')||'1')==='1', ctx:null, master:null, noiseBuf:null, noise:null, brushCount:0,
   init(){ if(this.ctx||!this.enabled)return;
@@ -1296,7 +1139,6 @@ function updateSoundBtn(){ const b=$('#soundBtn'); if(!b)return;
   b.title=Sound.enabled?'Sonido activado — pulsa para silenciar':'Sonido silenciado — pulsa para activar';
 }
 
-/* ═════════════════ Motor rAF único + lienzo de chispas ═════════════════ */
 const tasks=new Set();
 let particles=[], fx, fxCtx, fxW=0, fxH=0, fadeEnergy=0, lastT=performance.now();
 const COLORS={
@@ -1379,7 +1221,6 @@ function ambient(now){ if(RM||now-lastAmb<950)return; lastAmb=now;
   burst(cx+Math.cos(a)*rad,cy+Math.sin(a)*rad,Math.random()<.75?'gold':'cyan',1,50);
 }
 
-/* ═════════════════ Pinceles de lujo ═════════════════ */
 const pool=[], waiting={};
 function brushSVG(color,id){ const C=COLORS[color];
   return '<svg viewBox="0 0 64 150" xmlns="http://www.w3.org/2000/svg">'
@@ -1421,7 +1262,6 @@ function freeBrush(b){ b.hide();
   if(q&&q.length){ q.shift()(b); } else b.busy=false;
 }
 
-/* ═════════════════ Pintado de texto ═════════════════ */
 function splitEl(el){ if(el._split)return;
   const mode=el.dataset.paint||'words';
   const text=el.textContent.replace(/\s+/g,' ').trim();
@@ -1499,7 +1339,6 @@ async function queuePaint(el){
   finally{ freeBrush(br); }
 }
 
-/* ═════════════════ Cifras con pincel ámbar ═════════════════ */
 let statsRan=false;
 function statFinal(st){ const val=st.querySelector('.stat-val');
   if(val&&val.dataset.target){ const dec=+(val.dataset.decimals||0);
@@ -1550,7 +1389,6 @@ async function runStats(){ if(statsRan)return; statsRan=true;
   finally { Sound.brushOff(); freeBrush(br); }
 }
 
-/* ═════════════════ Escenas procedurales (las "fotografías" pintadas) ═════════════════ */
 function lg(c,x0,y0,x1,y1,stops){ const g=c.createLinearGradient(x0,y0,x1,y1);
   stops.forEach(s=>g.addColorStop(s[0],s[1])); return g; }
 function glow(c,x,y,r,rgb,a){ const g=c.createRadialGradient(x,y,0,x,y,r);
@@ -1562,64 +1400,39 @@ function vignette(c,w,h,a){ const g=c.createRadialGradient(w/2,h/2,Math.min(w,h)
 const SCENES={
 skyline(c,w,h){ const R=mulberry(7);
   c.fillStyle=lg(c,0,0,0,h,[[0,'#0B1030'],[.42,'#1A1440'],[.62,'#3A1E4E'],[.75,'#0A0F1F'],[1,'#060913']]); c.fillRect(0,0,w,h);
-  c.fillStyle='rgba(62,213,152,.07)';
-  c.beginPath(); c.ellipse(w*.3,h*.18,w*.42,h*.1,-.2,0,7); c.fill();
-  c.fillStyle='rgba(143,123,255,.08)';
-  c.beginPath(); c.ellipse(w*.65,h*.1,w*.4,h*.08,.15,0,7); c.fill();
-  for(let i=0;i<110;i++){ const x=R()*w,y=R()*h*.5,s=R()*1.4+.4;
-    c.fillStyle='rgba(240,240,255,'+(R()*.7+.15)+')'; c.fillRect(x,y,s,s); }
-  c.strokeStyle='rgba(255,255,255,.7)'; c.lineWidth=1.2;
-  c.beginPath(); c.moveTo(w*.2,h*.08); c.lineTo(w*.3,h*.14); c.stroke();
-  glow(c,w*.3,h*.14,6,'255,255,255',.8);
-  glow(c,w*.78,h*.16,60,'246,238,220',.5);
-  c.fillStyle='#F4EEDC'; c.beginPath(); c.arc(w*.78,h*.16,13,0,7); c.fill();
+  c.fillStyle='rgba(62,213,152,.07)'; c.beginPath(); c.ellipse(w*.3,h*.18,w*.42,h*.1,-.2,0,7); c.fill();
+  c.fillStyle='rgba(143,123,255,.08)'; c.beginPath(); c.ellipse(w*.65,h*.1,w*.4,h*.08,.15,0,7); c.fill();
+  for(let i=0;i<110;i++){ const x=R()*w,y=R()*h*.5,s=R()*1.4+.4; c.fillStyle='rgba(240,240,255,'+(R()*.7+.15)+')'; c.fillRect(x,y,s,s); }
+  glow(c,w*.78,h*.16,60,'246,238,220',.5); c.fillStyle='#F4EEDC'; c.beginPath(); c.arc(w*.78,h*.16,13,0,7); c.fill();
   glow(c,w*.5,h*.62,w*.5,'232,184,75',.12);
-  const base1=h*.66;
-  c.fillStyle='#141B33';
-  let x=0; while(x<w){ const bw=26+R()*46, bh=h*(.14+R()*.22);
-    c.fillRect(x,base1-bh,bw,bh); x+=bw+R()*8; }
+  const base1=h*.66; c.fillStyle='#141B33'; let x=0;
+  while(x<w){ const bw=26+R()*46, bh=h*(.14+R()*.22); c.fillRect(x,base1-bh,bw,bh); x+=bw+R()*8; }
   const base2=h*.8; x=-10;
   while(x<w){ const bw=34+R()*54, bh=h*(.2+R()*.32), bx=x, by=base2-bh;
-    c.fillStyle='#0A0F1F'; c.fillRect(bx,by,bw,bh);
-    c.fillStyle='rgba(232,184,75,.14)'; c.fillRect(bx,by,bw,1.4);
+    c.fillStyle='#0A0F1F'; c.fillRect(bx,by,bw,bh); c.fillStyle='rgba(232,184,75,.14)'; c.fillRect(bx,by,bw,1.4);
     const cols=Math.floor(bw/11), rows=Math.floor(bh/15);
     for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){ if(R()<.3){
       const pick=R(), col=pick<.55?'255,196,110':pick<.8?'140,220,255':pick<.92?'255,150,200':'150,240,190';
-      c.fillStyle='rgba('+col+','+(.5+R()*.5)+')';
-      c.fillRect(bx+4+i*11,by+6+j*15,3.4,5.4);
-      if(R()<.08)glow(c,bx+5.5+i*11,by+8.5+j*15,9,col,.35);
-    }}
-    if(bh>h*.4){ c.strokeStyle='rgba(160,170,200,.5)'; c.lineWidth=1;
-      c.beginPath(); c.moveTo(bx+bw/2,by); c.lineTo(bx+bw/2,by-12); c.stroke();
-      glow(c,bx+bw/2,by-12,7,'255,90,90',.8);
-      c.fillStyle='#FF6262'; c.fillRect(bx+bw/2-1,by-13,2,2); }
+      c.fillStyle='rgba('+col+','+(.5+R()*.5)+')'; c.fillRect(bx+4+i*11,by+6+j*15,3.4,5.4);
+      if(R()<.08)glow(c,bx+5.5+i*11,by+8.5+j*15,9,col,.35); }}
+    if(bh>h*.4){ c.strokeStyle='rgba(160,170,200,.5)'; c.lineWidth=1; c.beginPath(); c.moveTo(bx+bw/2,by); c.lineTo(bx+bw/2,by-12); c.stroke();
+      glow(c,bx+bw/2,by-12,7,'255,90,90',.8); c.fillStyle='#FF6262'; c.fillRect(bx+bw/2-1,by-13,2,2); }
     x+=bw+R()*10; }
-  c.strokeStyle='rgba(232,184,75,.3)'; c.lineWidth=1.1;
-  c.beginPath(); c.moveTo(0,h*.3); c.quadraticCurveTo(w*.5,h*.44,w,h*.33); c.stroke();
-  for(let i=1;i<6;i++){ const t=i/6, px=lerp(0,w,t),
-    py=(1-t)*(1-t)*h*.3+2*(1-t)*t*h*.44+t*t*h*.33;
-    glow(c,px,py,6,'79,217,255',.7); }
+  c.strokeStyle='rgba(232,184,75,.3)'; c.lineWidth=1.1; c.beginPath(); c.moveTo(0,h*.3); c.quadraticCurveTo(w*.5,h*.44,w,h*.33); c.stroke();
+  for(let i=1;i<6;i++){ const t=i/6, px=lerp(0,w,t), py=(1-t)*(1-t)*h*.3+2*(1-t)*t*h*.44+t*t*h*.33; glow(c,px,py,6,'79,217,255',.7); }
   c.fillStyle=lg(c,0,base2,0,h,[[0,'#081020'],[1,'#04070D']]); c.fillRect(0,base2,w,h-base2);
-  for(let i=0;i<70;i++){ const sx=R()*w, sy=base2+R()*(h-base2), len=8+R()*40;
-    c.fillStyle=R()<.6?'rgba(255,196,110,'+(R()*.1)+')':'rgba(140,220,255,'+(R()*.09)+')';
-    c.fillRect(sx,sy,1.2,len); }
+  for(let i=0;i<70;i++){ const sx=R()*w, sy=base2+R()*(h-base2), len=8+R()*40; c.fillStyle=R()<.6?'rgba(255,196,110,'+(R()*.1)+')':'rgba(140,220,255,'+(R()*.09)+')'; c.fillRect(sx,sy,1.2,len); }
   vignette(c,w,h,.42);
 },
 solar(c,w,h){ const R=mulberry(21);
   c.fillStyle=lg(c,0,0,0,h*.55,[[0,'#1B0B33'],[.35,'#8A2E5E'],[.7,'#FF7A3D'],[.92,'#FFC94D'],[1,'#FFE9B0']]); c.fillRect(0,0,w,h*.55);
   glow(c,w*.5,h*.47,110,'255,214,140',.8);
   c.strokeStyle='rgba(255,220,150,.22)'; c.lineWidth=1;
-  for(let i=0;i<12;i++){ const a=i/12*Math.PI*2;
-    c.beginPath(); c.moveTo(w*.5+Math.cos(a)*26,h*.47+Math.sin(a)*26);
-    c.lineTo(w*.5+Math.cos(a)*(58+R()*34),h*.47+Math.sin(a)*(58+R()*34)); c.stroke(); }
+  for(let i=0;i<12;i++){ const a=i/12*Math.PI*2; c.beginPath(); c.moveTo(w*.5+Math.cos(a)*26,h*.47+Math.sin(a)*26); c.lineTo(w*.5+Math.cos(a)*(58+R()*34),h*.47+Math.sin(a)*(58+R()*34)); c.stroke(); }
   c.fillStyle='#FFE9B0'; c.beginPath(); c.arc(w*.5,h*.47,20,0,7); c.fill();
-  [[.42,.55],[.36,.62],[.3,.7]].forEach(p=>glow(c,w*p[0],h*p[1],7,'255,214,140',.35));
   c.fillStyle='rgba(42,18,48,.16)';
-  for(let i=0;i<5;i++){ const cx=R()*w,cy=h*(.1+R()*.2);
-    c.beginPath(); c.ellipse(cx,cy,40+R()*70,7+R()*8,0,0,7); c.fill(); }
-  c.fillStyle='#23102A'; c.beginPath(); c.moveTo(0,h*.53);
-  for(let i=0;i<=10;i++)c.lineTo(w*i/10,h*(.47+R()*.06));
-  c.lineTo(w,h*.55); c.lineTo(0,h*.55); c.closePath(); c.fill();
+  for(let i=0;i<5;i++){ const cx=R()*w,cy=h*(.1+R()*.2); c.beginPath(); c.ellipse(cx,cy,40+R()*70,7+R()*8,0,0,7); c.fill(); }
+  c.fillStyle='#23102A'; c.beginPath(); c.moveTo(0,h*.53); for(let i=0;i<=10;i++)c.lineTo(w*i/10,h*(.47+R()*.06)); c.lineTo(w,h*.55); c.lineTo(0,h*.55); c.closePath(); c.fill();
   c.fillStyle=lg(c,0,h*.5,0,h,[[0,'#1A0F1E'],[1,'#0C0812']]); c.fillRect(0,h*.5,w,h*.5);
   const rowsY=[.56,.64,.73,.84,.97], scales=[.34,.48,.66,.9,1.2];
   for(let r=0;r<5;r++){ const y=h*rowsY[r], s=scales[r], pw=52*s, ph=26*s, gap=10*s, skew=9*s;
@@ -1628,128 +1441,79 @@ solar(c,w,h){ const R=mulberry(21);
       c.fillStyle=lg(c,px,y-ph,px+pw,y,[[0,'#0E2740'],[1,'#123A5C']]); c.fill();
       c.strokeStyle='rgba(46,110,150,.8)'; c.lineWidth=.8; c.stroke();
       c.strokeStyle='rgba(90,170,210,.3)';
-      for(let g=1;g<4;g++){ const t=g/4;
-        c.beginPath(); c.moveTo(px+pw*t,y); c.lineTo(px+pw*t-skew,y-ph); c.stroke(); }
+      for(let g=1;g<4;g++){ const t=g/4; c.beginPath(); c.moveTo(px+pw*t,y); c.lineTo(px+pw*t-skew,y-ph); c.stroke(); }
       c.beginPath(); c.moveTo(px-skew*.5,y-ph*.5); c.lineTo(px+pw-skew*.5,y-ph*.5); c.stroke();
       const sunT=1-Math.min(1,Math.abs(px+pw/2-w*.5)/(w*.6));
-      c.strokeStyle='rgba(255,214,140,'+(.25+.45*sunT)+')'; c.lineWidth=1.1;
-      c.beginPath(); c.moveTo(px-skew+3,y-ph+2); c.lineTo(px+pw-skew-3,y-ph+2); c.stroke();
+      c.strokeStyle='rgba(255,214,140,'+(.25+.45*sunT)+')'; c.lineWidth=1.1; c.beginPath(); c.moveTo(px-skew+3,y-ph+2); c.lineTo(px+pw-skew-3,y-ph+2); c.stroke();
       c.fillStyle='rgba(20,26,40,.9)'; c.fillRect(px+pw*.2,y,2*s,5*s); c.fillRect(px+pw*.75,y,2*s,5*s);
     }
     c.fillStyle='rgba(12,8,18,'+(.12+r*.05)+')'; c.fillRect(0,y,w,3*s);
   }
-  c.strokeStyle='rgba(30,14,36,.8)'; c.lineWidth=1.4;
-  for(let i=0;i<3;i++){ const bx=w*(.2+R()*.6), by=h*(.12+R()*.14), s=4+R()*4;
-    c.beginPath(); c.moveTo(bx-s,by); c.quadraticCurveTo(bx-s*.4,by-s*.7,bx,by);
-    c.quadraticCurveTo(bx+s*.4,by-s*.7,bx+s,by); c.stroke(); }
-  for(let i=0;i<6;i++)glow(c,R()*w,h*.52,5,'255,196,110',.6);
   vignette(c,w,h,.38);
 },
 hotel(c,w,h){ const R=mulberry(33);
   c.fillStyle=lg(c,0,0,0,h,[[0,'#120D08'],[.45,'#1E150C'],[1,'#0B0806']]); c.fillRect(0,0,w,h);
   c.strokeStyle='rgba(232,184,75,.13)'; c.lineWidth=1;
-  for(let i=0;i<3;i++){ const px=w*(.08+i*.31), pw=w*.22;
-    c.strokeRect(px,h*.14,pw,h*.58); c.strokeRect(px+6,h*.14+6,pw-12,h*.58-12); }
-  glow(c,w*.19,h*.72,36,'143,123,255',.3);
-  glow(c,w*.81,h*.72,36,'79,217,255',.3);
-  [w*.145,w*.855].forEach(wx=>{ const ww=w*.1, wy=h*.2, wh=h*.42;
-    c.beginPath(); c.moveTo(wx-ww/2,wy+wh); c.lineTo(wx-ww/2,wy+ww/2);
-    c.arc(wx,wy+ww/2,ww/2,Math.PI,0); c.lineTo(wx+ww/2,wy+wh); c.closePath();
-    c.fillStyle=lg(c,0,wy,0,wy+wh,[[0,'#0E1630'],[1,'#251A3E']]); c.fill();
-    c.strokeStyle='rgba(232,184,75,.35)'; c.stroke();
-    for(let i=0;i<14;i++){ c.fillStyle='rgba(255,210,130,'+(.3+R()*.5)+')';
-      c.fillRect(wx-ww/2+3+R()*(ww-6),wy+ww*.6+R()*(wh-ww*.6-4),1.6,1.6); } });
-  [w*.3,w*.7].forEach(sx=>{ glow(c,sx,h*.42,26,'255,196,110',.5);
-    c.fillStyle='#F6D98A'; c.fillRect(sx-1.4,h*.4,2.8,7); });
-  const cx=w*.5;
-  glow(cx,h*.42,w*.3,'255,190,100',.2);
-  c.strokeStyle='#C9973B'; c.lineWidth=1.6;
-  c.beginPath(); c.moveTo(cx,0); c.lineTo(cx,h*.2); c.stroke();
+  for(let i=0;i<3;i++){ const px=w*(.08+i*.31), pw=w*.22; c.strokeRect(px,h*.14,pw,h*.58); c.strokeRect(px+6,h*.14+6,pw-12,h*.58-12); }
+  glow(c,w*.19,h*.72,36,'143,123,255',.3); glow(c,w*.81,h*.72,36,'79,217,255',.3);
+  const cx=w*.5; glow(cx,h*.42,w*.3,'255,190,100',.2);
+  c.strokeStyle='#C9973B'; c.lineWidth=1.6; c.beginPath(); c.moveTo(cx,0); c.lineTo(cx,h*.2); c.stroke();
   c.fillStyle='#E8B84B'; c.beginPath(); c.arc(cx,h*.21,4,0,7); c.fill();
   c.beginPath(); c.moveTo(cx,h*.21); c.lineTo(cx,h*.56); c.stroke();
   const tiers=[[.3,.15,5],[.39,.21,7],[.48,.27,9]];
   tiers.forEach(t=>{ const ty=h*t[0], span=w*t[1], n=t[2];
-    c.strokeStyle='#E8B84B'; c.lineWidth=1.8;
-    c.beginPath(); c.moveTo(cx-span,ty); c.quadraticCurveTo(cx,ty+h*.075,cx+span,ty); c.stroke();
-    for(let i=0;i<n;i++){ const px=cx-span+(2*span)*i/(n-1),
-      dy=(1-Math.pow((i/(n-1))*2-1,2))*h*.037, py=ty+dy;
-      c.strokeStyle='rgba(232,184,75,.8)'; c.lineWidth=1;
-      c.beginPath(); c.moveTo(px,py); c.lineTo(px,py-7); c.stroke();
-      c.fillStyle='#F4EEDC'; c.fillRect(px-1.3,py-12,2.6,5.5);
-      glow(c,px,py-14,9,'255,208,120',.85);
-      c.fillStyle='#FFF3D0'; c.beginPath(); c.arc(px,py-13.5,1.6,0,7); c.fill();
-      if(R()<.25){ c.fillStyle=R()<.5?'rgba(140,220,255,.9)':'rgba(255,150,200,.9)';
-        c.fillRect(px+3,py-6,1.6,1.6); }
-      if(R()<.6){ c.strokeStyle='rgba(244,238,220,.4)';
-        c.beginPath(); c.moveTo(px,py+2); c.lineTo(px,py+8+R()*6); c.stroke();
-        if(R()<.3)glow(c,px,py+11,4,'140,220,255',.5); }
-    } });
-  c.fillStyle='#E8B84B'; c.beginPath();
-  c.moveTo(cx,h*.56); c.lineTo(cx+4,h*.6); c.lineTo(cx,h*.64); c.lineTo(cx-4,h*.6); c.closePath(); c.fill();
-  glow(c,cx,h*.63,10,'255,208,120',.5);
+    c.strokeStyle='#E8B84B'; c.lineWidth=1.8; c.beginPath(); c.moveTo(cx-span,ty); c.quadraticCurveTo(cx,ty+h*.075,cx+span,ty); c.stroke();
+    for(let i=0;i<n;i++){ const px=cx-span+(2*span)*i/(n-1), dy=(1-Math.pow((i/(n-1))*2-1,2))*h*.037, py=ty+dy;
+      c.strokeStyle='rgba(232,184,75,.8)'; c.lineWidth=1; c.beginPath(); c.moveTo(px,py); c.lineTo(px,py-7); c.stroke();
+      c.fillStyle='#F4EEDC'; c.fillRect(px-1.3,py-12,2.6,5.5); glow(c,px,py-14,9,'255,208,120',.85);
+      c.fillStyle='#FFF3D0'; c.beginPath(); c.arc(px,py-13.5,1.6,0,7); c.fill(); }});
   c.fillStyle=lg(c,0,h*.78,0,h,[[0,'#0A0705'],[1,'#050403']]); c.fillRect(0,h*.78,w,h*.22);
-  c.fillStyle='rgba(255,190,100,.1)';
-  c.beginPath(); c.ellipse(cx,h*.85,w*.24,h*.045,0,0,7); c.fill();
-  [[.12,'#0D0A07'],[.88,'#0D0A07']].forEach(ch=>{ const px=w*ch[0];
-    c.fillStyle=ch[1];
-    c.beginPath(); c.moveTo(px-w*.07,h); c.lineTo(px-w*.06,h*.82); c.quadraticCurveTo(px,h*.76,px+w*.06,h*.82); c.lineTo(px+w*.07,h); c.closePath(); c.fill();
-    c.strokeStyle='rgba(232,184,75,.25)'; c.lineWidth=1; c.stroke(); });
   vignette(c,w,h,.45);
 },
 substation(c,w,h){ const R=mulberry(49);
   c.fillStyle=lg(c,0,0,0,h,[[0,'#04121C'],[.5,'#0A2430'],[.7,'#0E3038'],[1,'#050D12']]); c.fillRect(0,0,w,h);
-  c.fillStyle='rgba(79,217,255,.06)';
-  c.beginPath(); c.ellipse(w*.6,h*.16,w*.5,h*.09,-.15,0,7); c.fill();
-  for(let i=0;i<50;i++){ c.fillStyle='rgba(220,240,255,'+(R()*.5+.1)+')';
-    c.fillRect(R()*w,R()*h*.4,1,1); }
+  for(let i=0;i<50;i++){ c.fillStyle='rgba(220,240,255,'+(R()*.5+.1)+')'; c.fillRect(R()*w,R()*h*.4,1,1); }
   const tx=w*.18, twr=w*.075, tTop=h*.14, tBase=h*.7;
   c.strokeStyle='#1E4652'; c.lineWidth=1.6;
   c.beginPath(); c.moveTo(tx-twr,tBase); c.lineTo(tx-twr*.32,tTop); c.lineTo(tx+twr*.32,tTop); c.lineTo(tx+twr,tBase); c.stroke();
-  for(let i=0;i<6;i++){ const y0=lerp(tBase,tTop,i/6), y1=lerp(tBase,tTop,(i+1)/6),
-    w0=lerp(twr,twr*.32,i/6), w1=lerp(twr,twr*.32,(i+1)/6);
-    c.beginPath(); c.moveTo(tx-w0,y0); c.lineTo(tx+w1,y1); c.moveTo(tx+w0,y0); c.lineTo(tx-w1,y1);
-    c.moveTo(tx-w1,y1); c.lineTo(tx+w1,y1); c.stroke(); }
-  [[.24,.3],[.3,.36],[.36,.42]].forEach(arm=>{ const ay=h*arm[1];
-    c.beginPath(); c.moveTo(tx-twr*1.5,ay); c.lineTo(tx+twr*1.5,ay); c.stroke(); });
-  glow(c,tx-twr*1.5,h*.3,9,'143,123,255',.5);
-  glow(c,tx+twr*1.5,h*.36,9,'143,123,255',.5);
-  glow(c,tx,tTop-4,8,'255,90,90',.9);
-  c.fillStyle='#FF6262'; c.beginPath(); c.arc(tx,tTop-4,2.2,0,7); c.fill();
+  for(let i=0;i<6;i++){ const y0=lerp(tBase,tTop,i/6), y1=lerp(tBase,tTop,(i+1)/6), w0=lerp(twr,twr*.32,i/6), w1=lerp(twr,twr*.32,(i+1)/6);
+    c.beginPath(); c.moveTo(tx-w0,y0); c.lineTo(tx+w1,y1); c.moveTo(tx+w0,y0); c.lineTo(tx-w1,y1); c.moveTo(tx-w1,y1); c.lineTo(tx+w1,y1); c.stroke(); }
+  glow(c,tx,tTop-4,8,'255,90,90',.9); c.fillStyle='#FF6262'; c.beginPath(); c.arc(tx,tTop-4,2.2,0,7); c.fill();
   const busY=[h*.3,h*.36,h*.42];
-  busY.forEach(by=>{ c.strokeStyle='#2A5A66'; c.lineWidth=1.4;
-    c.beginPath(); c.moveTo(tx+twr*1.5,by); c.quadraticCurveTo(w*.6,by+h*.03,w,by-h*.01); c.stroke();
-    for(let k=1;k<7;k++){ const t=k/7, px=lerp(tx+twr*1.5,w,t),
-      py=(1-t)*(1-t)*by+2*(1-t)*t*(by+h*.03)+t*t*(by-h*.01);
-      glow(c,px,py,R()<.25?10:5,'79,217,255',R()<.25?.8:.45); } });
-  [[.56,.16],[.78,.13]].forEach(tr=>{ const bx=w*tr[0], bw=w*tr[1], bh=h*.15, by=h*.68-bh;
-    c.fillStyle='#0B1B22'; c.fillRect(bx,by,bw,bh);
-    c.strokeStyle='#1E4652'; c.lineWidth=1.2; c.strokeRect(bx,by,bw,bh);
-    for(let f=1;f<6;f++){ c.beginPath(); c.moveTo(bx+bw*f/6,by+3); c.lineTo(bx+bw*f/6,by+bh-3); c.stroke(); }
-    for(let b=0;b<3;b++){ const px=bx+bw*(.25+b*.25);
-      c.strokeStyle='#2A5A66';
-      for(let s2=0;s2<3;s2++){ c.beginPath(); c.ellipse(px,by-4-s2*4,3.4,1.8,0,0,7); c.stroke(); }
-      glow(c,px,by-16,6,'79,217,255',.7);
-      c.strokeStyle='rgba(42,90,102,.9)';
-      c.beginPath(); c.moveTo(px,by-16); c.quadraticCurveTo(px+w*.04,busY[b]+h*.05,px+w*.09,busY[b]+h*.005); c.stroke(); } });
-  c.fillStyle='#3ED598';
-  [[.58,.66],[.62,.66],[.8,.66],[.84,.66]].forEach(p=>{ c.fillRect(w*p[0],h*p[1],2,2); glow(c,w*p[0]+1,h*p[1]+1,5,'62,213,152',.6); });
-  c.fillStyle='#0B1B22'; c.fillRect(w*.05,h*.6,w*.1,h*.1);
-  c.strokeStyle='#1E4652'; c.strokeRect(w*.05,h*.6,w*.1,h*.1);
-  glow(c,w*.1,h*.65,12,'255,196,110',.6);
-  c.fillStyle='rgba(255,210,130,.9)'; c.fillRect(w*.085,h*.63,w*.03,h*.035);
+  busY.forEach(by=>{ c.strokeStyle='#2A5A66'; c.lineWidth=1.4; c.beginPath(); c.moveTo(tx+twr*1.5,by); c.quadraticCurveTo(w*.6,by+h*.03,w,by-h*.01); c.stroke();
+    for(let k=1;k<7;k++){ const t=k/7, px=lerp(tx+twr*1.5,w,t), py=(1-t)*(1-t)*by+2*(1-t)*t*(by+h*.03)+t*t*(by-h*.01); glow(c,px,py,5,'79,217,255',.45); }});
   c.fillStyle=lg(c,0,h*.7,0,h,[[0,'#071219'],[1,'#04090D']]); c.fillRect(0,h*.7,w,h*.3);
-  c.fillStyle='rgba(79,217,255,.05)'; c.fillRect(0,h*.68,w,h*.08);
-  c.strokeStyle='rgba(42,90,102,.5)'; c.lineWidth=1;
-  c.beginPath(); c.moveTo(0,h*.74); c.lineTo(w,h*.74); c.stroke();
-  for(let px=0;px<w;px+=14){ c.beginPath(); c.moveTo(px,h*.74); c.lineTo(px,h*.79); c.stroke(); }
-  const hx=w*.42, hy=h*.76;
-  c.fillStyle='#FFC24D'; c.beginPath(); c.moveTo(hx,hy-8); c.lineTo(hx+8,hy+6); c.lineTo(hx-8,hy+6); c.closePath(); c.fill();
-  c.strokeStyle='#05070F'; c.lineWidth=1.4;
-  c.beginPath(); c.moveTo(hx+1.5,hy-4); c.lineTo(hx-1.5,hy+1); c.lineTo(hx+1,hy+1); c.lineTo(hx-1.5,hy+4.5); c.stroke();
   vignette(c,w,h,.42);
 }};
 
-/* ═════════════════ Obras: pintura con pincel violeta ═════════════════ */
+/* ═══ Fotografía real: se carga y los pinceles la revelan (con respaldo pintado) ═══ */
+const photoCache={};
+function drawCover(sc,img,w,h){
+  const s=Math.max(w/img.width,h/img.height);
+  const dw=img.width*s, dh=img.height*s;
+  sc.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);
+}
+function loadPhoto(card){
+  const P=card._p; if(!P)return;
+  const url=card.dataset.photo; if(!url)return;
+  const apply=(img)=>{
+    const Q=card._p; if(!Q||!Q.sc)return;
+    try{
+      Q.sc.clearRect(0,0,Q.w,Q.h);
+      drawCover(Q.sc,img,Q.w,Q.h);
+      Q.sc.fillStyle=lg(Q.sc,0,Q.h*.5,0,Q.h,[[0,'rgba(5,7,15,0)'],[1,'rgba(5,7,15,.5)']]);
+      Q.sc.fillRect(0,Q.h*.5,Q.w,Q.h*.5);
+      vignette(Q.sc,Q.w,Q.h,.32);
+      Q.hasPhoto=true;
+      if(Q.state==='done'){ Q.ctx.clearRect(0,0,Q.w,Q.h); Q.ctx.drawImage(Q.scene,0,0,Q.w,Q.h); }
+    }catch(e){}
+  };
+  if(photoCache[url]){ apply(photoCache[url]); return; }
+  const img=new Image();
+  img.onload=()=>{ photoCache[url]=img; apply(img); };
+  img.onerror=()=>{};
+  img.src=url;
+}
 function setupWork(card){
   const wrap=card.querySelector('.work-frame'), cv=card.querySelector('canvas');
   if(!wrap||!cv)return;
@@ -1765,7 +1529,8 @@ function setupWork(card){
   const mask=document.createElement('canvas'); mask.width=cv.width; mask.height=cv.height;
   const mc=mask.getContext('2d'); if(!mc)return;
   mc.setTransform(dpr,0,0,dpr,0,0);
-  card._p={wrap,cv,ctx,scene,mask,mc,w,h,state:'idle',abort:false};
+  card._p={wrap,cv,ctx,scene,sc,mask,mc,w,h,state:'idle',abort:false,hasPhoto:false};
+  loadPhoto(card);
 }
 function finishWorkInstant(card){
   const P=card._p; if(!P)return;
@@ -1791,8 +1556,7 @@ async function paintWork(card){
     P.ctx.globalCompositeOperation='destination-in';
     P.ctx.drawImage(P.mask,0,0,P.w,P.h);
     P.ctx.globalCompositeOperation='source-over'; };
-  const stampMask=(x,y)=>{ const r=rowH*1.05;
-    P.mc.drawImage(maskSprite,x-r,y-r,r*2,r*2); };
+  const stampMask=(x,y)=>{ const r=rowH*1.05; P.mc.drawImage(maskSprite,x-r,y-r,r*2,r*2); };
   Sound.brushOn();
   try{
     await tw(2600,(e,k)=>{
@@ -1800,8 +1564,7 @@ async function paintWork(card){
       const d=k*total, r=Math.min(rows-1,Math.floor(d/span)), within=d-r*span, dir=r%2===0;
       const x=dir?m+within:P.w-m-within;
       const y=m+rowH*(r+.5)+Math.sin(within*.045)*3;
-      if(last){ const dx=x-last.x, dy=y-last.y, dist=Math.hypot(dx,dy),
-        steps=Math.max(1,Math.ceil(dist/7));
+      if(last){ const dx=x-last.x, dy=y-last.y, dist=Math.hypot(dx,dy), steps=Math.max(1,Math.ceil(dist/7));
         for(let i=1;i<=steps;i++)stampMask(last.x+dx*i/steps,last.y+dy*i/steps);
       } else stampMask(x,y);
       last={x,y}; drawComp();
@@ -1823,7 +1586,6 @@ async function paintWork(card){
   finally { Sound.brushOff(); freeBrush(br); }
 }
 
-/* ═════════════════ Método: línea dorada por scroll ═════════════════ */
 let mPath,mDot,mRail,mSteps,mLen=0,lastP=-1;
 function updateMethod(){ if(!mPath)return;
   const rect=mRail.getBoundingClientRect();
@@ -1835,15 +1597,13 @@ function updateMethod(){ if(!mPath)return;
     mDot.style.transform='translate('+(x-6)+'px,'+(y-6)+'px)';
     if(!RM&&p>lastP&&p<1&&rect.top<innerHeight&&rect.bottom>0){
       mSteps.forEach((st,i)=>{ const thr=(i+.5)/mSteps.length;
-        if(lastP<thr&&p>=thr){ const dr=mDot.getBoundingClientRect();
-          burst(dr.left+6,dr.top+6,'gold',5,90); Sound.tick(); } });
+        if(lastP<thr&&p>=thr){ const dr=mDot.getBoundingClientRect(); burst(dr.left+6,dr.top+6,'gold',5,90); Sound.tick(); } });
     }
   }catch(e){}
   mSteps.forEach((st,i)=>st.classList.toggle('active',p>=(i+.42)/mSteps.length));
   lastP=p;
 }
 
-/* ═════════════════ NUEVO: pulsos de corriente en el héroe ═════════════════ */
 function initHeroPulses(){
   if(RM)return;
   const paths=$$('.hero-circuits path'), dots=[$('#hd0'),$('#hd1'),$('#hd2')];
@@ -1861,8 +1621,6 @@ function initHeroPulses(){
     return true;
   });
 }
-
-/* ═════════════════ NUEVO: palabra rotativa ═════════════════ */
 let rotorTimer=null;
 function startRotor(){
   const el=$('#rotorWord'); if(!el||rotorTimer)return;
@@ -1875,8 +1633,6 @@ function startRotor(){
     setTimeout(()=>{ el.textContent=words[i][0]; el.style.color=words[i][1]; el.classList.remove('swap'); },RM?0:280);
   },2800);
 }
-
-/* ═════════════════ NUEVO: ondas al tocar + botones magnéticos ═════════════════ */
 function initRipples(){
   if(RM)return;
   document.addEventListener('pointerdown',e=>{
@@ -1903,8 +1659,6 @@ function initMagnet(){
     b.addEventListener('pointerleave',()=>{ b.style.transform=''; });
   });
 }
-
-/* ═════════════════ NUEVO: Laboratorio de luz ═════════════════ */
 const LIGHT={
   cena:{name:'Cena',desc:'Ámbar cálido de 2700 K: la mesa brilla, las sombras se suavizan y la conversación fluye.',amb:'radial-gradient(120% 100% at 50% 0%,#3A2410 0%,#1C1006 62%,#0D0703 100%)',lamp:'#FFC24D',win:'#232C4E',strip:'#E8B84B',glow:.55,meter:70,color:'amber',party:false},
   cine:{name:'Cine',desc:'Azul profundo y luz indirecta: contraste perfecto para la pantalla, cero reflejos.',amb:'radial-gradient(120% 100% at 50% 0%,#101B3A 0%,#0A1024 60%,#05070F 100%)',lamp:'#58B6FF',win:'#0B1226',strip:'#4FD9FF',glow:.22,meter:25,color:'cyan',party:false},
@@ -1919,9 +1673,7 @@ function applyScene(key,btn){
   const A=$('#ambA'), B=$('#ambB');
   if(A&&B){
     const show=ambFlip?A:B, hide=ambFlip?B:A;
-    show.style.background=s.amb;
-    show.style.opacity=1; hide.style.opacity=0;
-    ambFlip=!ambFlip;
+    show.style.background=s.amb; show.style.opacity=1; hide.style.opacity=0; ambFlip=!ambFlip;
   }
   room.style.setProperty('--lamp',s.lamp);
   room.style.setProperty('--win',s.win);
@@ -1948,8 +1700,6 @@ function initDemo(){
   }));
   applyScene('cena',btns[0]);
 }
-
-/* ═════════════════ NUEVO: confeti de celebración ═════════════════ */
 function celebrate(big){
   if(RM)return;
   const cols=['gold','cyan','violet','amber','rose','green'], n=big?26:10;
@@ -1957,8 +1707,6 @@ function celebrate(big){
     setTimeout(()=>{ burst(rand(innerWidth*.12,innerWidth*.88),rand(innerHeight*.1,innerHeight*.5),cols[i%6],big?7:5,big?160:120); },i*60);
   }
 }
-
-/* ═════════════════ NUEVO: testimonios que se iluminan por turno ═════════════════ */
 function initQuoteCycle(){
   const qs=$$('.quote'); if(qs.length<2||RM)return;
   let i=0;
@@ -1968,7 +1716,6 @@ function initQuoteCycle(){
   },3600);
 }
 
-/* ═════════════════ Observadores (con alternativa sin IntersectionObserver) ═════════════════ */
 function staticReveal(){
   $$('[data-reveal]').forEach(el=>el.classList.add('in'));
   $$('[data-paint]').forEach(el=>{ splitEl(el); el._units.forEach(u=>u.classList.add('ink')); });
@@ -1984,22 +1731,18 @@ function initObservers(){
       if(en.isIntersecting){ en.target.classList.add('in'); revealObs.unobserve(en.target); }
     }),{threshold:.15,rootMargin:'0px 0px -7% 0px'});
     $$('[data-reveal]:not([data-reveal="manual"])').forEach(el=>revealObs.observe(el));
-
     const paintObs=new IntersectionObserver(es=>es.forEach(en=>{
       if(en.isIntersecting){ paintObs.unobserve(en.target); queuePaint(en.target); }
     }),{threshold:.4});
     $$('[data-auto]').forEach(el=>paintObs.observe(el));
-
     const statsObs=new IntersectionObserver(es=>es.forEach(en=>{
       if(en.isIntersecting){ statsObs.disconnect(); runStats(); }
     }),{threshold:.3});
     statsObs.observe($('#logros'));
-
     const workObs=new IntersectionObserver(es=>es.forEach(en=>{
       if(en.isIntersecting){ workObs.unobserve(en.target); paintWork(en.target); }
     }),{threshold:.35});
     $$('.work').forEach(wk=>workObs.observe(wk));
-
     const navObs=new IntersectionObserver(es=>es.forEach(en=>{
       if(en.isIntersecting){ const id=en.target.id;
         $$('[data-navlink]').forEach(a=>a.classList.toggle('active',a.dataset.navlink===id)); }
@@ -2008,7 +1751,6 @@ function initObservers(){
   }catch(e){ staticReveal(); }
 }
 
-/* ═════════════════ Scroll: progreso, nav, parallax ═════════════════ */
 let ticking=false;
 function onScroll(){ if(ticking)return; ticking=true;
   requestAnimationFrame(()=>{ ticking=false;
@@ -2019,13 +1761,11 @@ function onScroll(){ if(ticking)return; ticking=true;
     $('#progress').style.width=(prog*100)+'%';
     const tr=$('#topRing'); if(tr)tr.style.strokeDashoffset=String(1-prog);
     $('#topBtn').classList.toggle('show',y>600);
-    if(!RM){ const ew=$('#emblemWrap');
-      if(ew)ew.style.transform='translateY('+Math.min(y*.12,130)+'px)'; }
+    if(!RM){ const ew=$('#emblemWrap'); if(ew)ew.style.transform='translateY('+Math.min(y*.12,130)+'px)'; }
     updateMethod();
   });
 }
 
-/* ═════════════════ Toasts ═════════════════ */
 function toast(msg,tone){ tone=tone||'gold';
   const box=$('#toasts');
   while(box.children.length>=3)rm(box.firstChild);
@@ -2038,7 +1778,6 @@ function toast(msg,tone){ tone=tone||'gold';
   setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>rm(t),380); },2900);
 }
 
-/* ═════════════════ Menú & Modal ═════════════════ */
 let menuOpen=false, modalOpen=false, lastFocus=null;
 function syncLock(){ document.body.classList.toggle('lock',menuOpen||modalOpen); }
 function setMenu(open){ menuOpen=open;
@@ -2063,16 +1802,13 @@ function closeModal(){ modalOpen=false; $('#modal').classList.remove('open'); sy
   if(lastFocus&&lastFocus.focus)lastFocus.focus();
 }
 
-/* ═════════════════ Formulario ═════════════════ */
 function initForm(){
   const form=$('#contactForm'); if(!form)return;
   const name=$('#f-name'), email=$('#f-email'), msg=$('#f-msg'), consent=$('#f-consent');
-  const setErr=(input,errEl,text)=>{ input.classList.toggle('invalid',!!text);
-    if(errEl)errEl.textContent=text||''; };
+  const setErr=(input,errEl,text)=>{ input.classList.toggle('invalid',!!text); if(errEl)errEl.textContent=text||''; };
   [name,email,msg].forEach(i=>i.addEventListener('input',()=>{
     i.classList.remove('invalid');
-    const e=i===name?$('#e-name'):i===email?$('#e-email'):$('#e-msg');
-    if(e)e.textContent='';
+    const e=i===name?$('#e-name'):i===email?$('#e-email'):$('#e-msg'); if(e)e.textContent='';
   }));
   consent.addEventListener('change',()=>$('#e-consent').textContent='');
   form.addEventListener('submit',ev=>{ ev.preventDefault();
@@ -2097,7 +1833,6 @@ function initForm(){
   });
 }
 
-/* ═════════════════ Interacciones varias ═════════════════ */
 async function copyText(t){
   try{ await navigator.clipboard.writeText(t); return true; }
   catch(e){ try{ const ta=document.createElement('textarea');
@@ -2112,15 +1847,13 @@ function initInteractions(){
   $('#soundBtn').addEventListener('click',()=>{ Sound.setEnabled(!Sound.enabled);
     toast(Sound.enabled?'Sonido activado':'Sonido silenciado',Sound.enabled?'ok':'info'); });
   updateSoundBtn();
-  document.addEventListener('click',e=>{ const tg=e.target;
-    if(tg&&tg.closest&&tg.closest('button, a'))Sound.click(); });
+  document.addEventListener('click',e=>{ const tg=e.target; if(tg&&tg.closest&&tg.closest('button, a'))Sound.click(); });
   $('#burger').addEventListener('click',()=>setMenu(!menuOpen));
   $$('#menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
   $$('[data-legal]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.legal)));
   $('#modalClose').addEventListener('click',closeModal);
   $('[data-close-modal]').addEventListener('click',closeModal);
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){
-    if(modalOpen)closeModal(); else if(menuOpen)setMenu(false); }});
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if(modalOpen)closeModal(); else if(menuOpen)setMenu(false); }});
   $$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
     const ok=await copyText(b.dataset.copy);
     toast(ok?(b.dataset.copyLabel||'Texto')+' copiado al portapapeles':'No se pudo copiar: '+b.dataset.copy, ok?'ok':'info');
@@ -2129,37 +1862,28 @@ function initInteractions(){
     const sel=$('#f-service'); sel.value=b.dataset.service;
     sel.classList.remove('flash'); void sel.offsetWidth; sel.classList.add('flash');
     const target=$('#contacto');
-    if(SMOOTH)target.scrollIntoView({behavior:RM?'auto':'smooth'});
-    else target.scrollIntoView();
+    if(SMOOTH)target.scrollIntoView({behavior:RM?'auto':'smooth'}); else target.scrollIntoView();
     toast('Servicio preseleccionado: '+b.dataset.service,'info');
     setTimeout(()=>$('#f-name').focus({preventScroll:true}),RM?100:700);
   }));
-  $('#topBtn').addEventListener('click',()=>{
-    if(SMOOTH)scrollTo({top:0,behavior:RM?'auto':'smooth'});
-    else scrollTo(0,0);
-  });
-  const track=$('#marqueeTrack');
-  if(track){ const clone=track.innerHTML; track.innerHTML=clone+clone; }
+  $('#topBtn').addEventListener('click',()=>{ if(SMOOTH)scrollTo({top:0,behavior:RM?'auto':'smooth'}); else scrollTo(0,0); });
+  const track=$('#marqueeTrack'); if(track){ const clone=track.innerHTML; track.innerHTML=clone+clone; }
   if(FINE&&!RM){ $$('.work').forEach(card=>{
     const frame=card.querySelector('.work-frame');
     frame.addEventListener('pointermove',e=>{
       if(!card._p||card._p.state!=='done')return;
-      const r=frame.getBoundingClientRect(),
-        px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      const r=frame.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
       frame.style.transform='perspective(900px) rotateX('+(-py*5)+'deg) rotateY('+(px*7)+'deg) translateY(-4px)';
     });
     frame.addEventListener('pointerleave',()=>{ frame.style.transform=''; });
   }); }
   if(FINE&&!RM){ const g=$('#glow'); let mx=innerWidth/2,my=innerHeight/3,gx=mx,gy=my,shown=false;
-    window.addEventListener('pointermove',e=>{ mx=e.clientX; my=e.clientY;
-      if(!shown){shown=true;g.style.opacity=1;} },{passive:true});
-    tasks.add(()=>{ gx=lerp(gx,mx,.1); gy=lerp(gy,my,.1);
-      g.style.transform='translate('+(gx-240)+'px,'+(gy-240)+'px)'; return true; });
+    window.addEventListener('pointermove',e=>{ mx=e.clientX; my=e.clientY; if(!shown){shown=true;g.style.opacity=1;} },{passive:true});
+    tasks.add(()=>{ gx=lerp(gx,mx,.1); gy=lerp(gy,my,.1); g.style.transform='translate('+(gx-240)+'px,'+(gy-240)+'px)'; return true; });
   }
   $('#year').textContent=String(new Date().getFullYear());
 }
 
-/* ═════════════════ Resize robusto ═════════════════ */
 let rsTimer=null;
 function onResize(){ window.__rt++; resizeFx();
   clearTimeout(rsTimer);
@@ -2176,7 +1900,6 @@ function onResize(){ window.__rt++; resizeFx();
   },220);
 }
 
-/* ═════════════════ Arranque blindado ═════════════════ */
 async function heroSequence(){
   $('#heroEmblem').classList.add('drawn');
   await wait(320);
@@ -2234,8 +1957,7 @@ function init(){
   ['gold','gold','cyan','amber','violet','violet'].forEach((c,i)=>makeBrush(c,i));
   $$('[data-paint]').forEach(splitEl);
   if(!RM)$$('.stat-val[data-target]').forEach(v=>{
-    const dec=+(v.dataset.decimals||0);
-    v.textContent=fmtNum(0,dec);
+    const dec=+(v.dataset.decimals||0); v.textContent=fmtNum(0,dec);
   });
   try{ $$('.work').forEach(setupWork); }catch(e){}
   mPath=$('#mPath'); mDot=$('#mDot'); mRail=$('#mRail'); mSteps=$$('.step');
